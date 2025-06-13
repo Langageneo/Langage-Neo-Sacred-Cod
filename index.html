@@ -121,6 +121,19 @@
     }
   </style>
 </head>
+  const chapterItems = document.querySelectorAll('#chapters li');
+const descriptionDiv = document.getElementById('chapter-description');
+
+chapterItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Retirer la classe "selected" de tous les chapitres
+    chapterItems.forEach(li => li.classList.remove('selected'));
+    // Ajouter la classe "selected" au chapitre cliqué
+    item.classList.add('selected');
+    // Afficher la description stockée dans data-desc
+    descriptionDiv.textContent = item.getAttribute('data-desc');
+  });
+});
 <body>
 
   <!-- Canvas Matrix animé en fond -->
