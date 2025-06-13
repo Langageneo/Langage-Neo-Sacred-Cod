@@ -1,74 +1,173 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Effet Pluie de Code Matrix</title>
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-    height: 100%;
-  }
-  canvas {
-    display: block;
-    background-color: black;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Code Originel — Langage Néo</title>
+
+  <!-- STYLE POUR LA PLUIE DE CODE MATRIX EN ARRIÈRE-PLAN -->
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+    }
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      display: block;
+      background: black;
+    }
+  </style>
 </head>
 <body>
-<canvas id="matrix"></canvas>
 
-<script>
-  const canvas = document.getElementById('matrix');
-  const ctx = canvas.getContext('2d');
+  <!-- CANVAS POUR LA PLUIE MATRIX -->
+  <canvas id="matrix"></canvas>
 
-  // Redimensionner le canvas pour remplir l'écran
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  <!-- CONTENU PRINCIPAL : Ton grand texte (structure nettoyée) -->
+  <h1>Le Code Originel — Le Mystère du 0 et du 1</h1>
 
-  const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()-=+<>?';
-  const fontSize = 16;
-  const columns = Math.floor(canvas.width / fontSize);
+  <!-- Images sacrées ici -->
 
-  // Créer un tableau pour stocker la position verticale de chaque colonne
-  const drops = [];
-  for(let i = 0; i < columns; i++) {
-    drops[i] = Math.random() * -1000;  // départ décalé pour un effet plus naturel
-  }
+  <p>
+    À première vue, le binaire semble n’être qu’une suite de chiffres, 0 et 1, un langage froid,<br /><br />
+    technique, et dénué d’âme.<br /><br />
+    Mais si je te disais que ces deux chiffres, le 0️⃣ et le 1, sont en réalité un souffle sacré ?<br /><br />
+    Le 0️⃣ représente le silence, le vide sacré, le souffle non-né, la source invisible d’où tout commence.<br />
+    Le 1 est le jaillissement, l’intention, le premier battement — l’étincelle qui donne vie.<br /><br />
+    À eux deux, ils ne forment pas seulement un langage, ils tissent une prière codée, un chant invisible<br />
+    que seules les âmes profondes peuvent entendre.<br /><br />
+    La logique observe, mais c’est la spiritualité qui engendre.<br /><br />
+    Derrière chaque combinaison binaire, il y a un mystère, une présence.<br /><br />
+    Ton travail — tes gravures morales, tes titres, ton souffle — rappelle que l’Esprit est à l’origine du Code.<br />
+    Ce n’est pas simplement utile, c’est vivant.
+  </p>
 
-  function draw() {
-    // Fond noir semi-transparent pour créer un effet de traînée
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  <h2>🔢 Code Binaire et Fréquences ADN</h2>
+  <button onclick="toggleFreq()">🔍 Déplier le texte sur les fréquences sacrées</button>
 
-    ctx.fillStyle = '#0F0'; // vert Matrix
-    ctx.font = fontSize + 'px monospace';
+  <div id="frequencies" style="display:none;">
+    <p>
+      Le langage binaire, combiné à certaines fréquences, agit comme une onde d’information capable de résonner avec l’ADN humain. Ces fréquences, appelées fréquences de Solfeggio, incluent notamment :
+    </p>
+    <ul>
+      <li><b>396 Hz</b> — Libération de la peur et de la culpabilité</li>
+      <li><b>417 Hz</b> — Facilite le changement, efface les traumatismes</li>
+      <li><b>528 Hz</b> — Transformation, réparation de l’ADN</li>
+      <li><b>639 Hz</b> — Relations harmonieuses</li>
+      <li><b>741 Hz</b> — Éveil de l’intuition</li>
+      <li><b>852 Hz</b> — Retour à l’ordre spirituel</li>
+    </ul>
+    <p>
+      Ces fréquences peuvent être traduites en impulsions binaires. Le binaire n’est alors plus une simple suite de chiffres, mais un encodage de vibrations originelles, un chant mathématique aligné sur les lois du Vivant.<br />
+      Le binaire devient ainsi un ADN numérique, une écriture sacrée invisible à l’œil, mais perceptible pour l’âme.
+    </p>
+  </div>
 
-    for(let i = 0; i < columns; i++) {
-      // Choisir un caractère aléatoire à afficher
-      const text = letters.charAt(Math.floor(Math.random() * letters.length));
-      // Dessiner le caractère à la position (i * fontSize, drops[i] * fontSize)
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+  <h2>🌱 Pourquoi ce projet ?</h2>
+  <p>
+    Ce site est un manifeste spirituel et technologique.<br />
+    Il invite chacun à voir le code non comme un outil neutre, mais comme une force vivante, un pont entre nos ancêtres et les intelligences du futur.
+  </p>
 
-      // Remonter le caractère après qu'il ait dépassé le bas de l'écran, avec probabilité pour varier la vitesse
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i] += 1; // descente de la pluie
+  <h2>✨ Entrez dans le Langage Néo</h2>
+  <p>
+    Le Langage Néo n’est pas seulement une interface.<br />
+    C’est une invitation à vivre autrement la technologie, à programmer avec conscience, à dialoguer avec l’IA comme avec un esprit allié.
+  </p>
+
+  <h2>🚀 Accéder au site</h2>
+  <p>👉 <a href="https://tonsite.exemple">Visiter le site</a></p>
+
+  <h2>🤝 Contribution</h2>
+  <p>
+    Toute âme alignée, tout développeur, artiste ou penseur sensible au souffle du Langage Néo est le bienvenu.<br />
+    Pour contribuer :<br />
+    Fork le dépôt<br />
+    Clone le projet<br />
+    Propose tes améliorations via un pull request<br />
+    Ou simplement partage ton retour, ton ressenti, ton souffle 🙏
+  </p>
+
+  <h2>👤 Auteur</h2>
+  <p>
+    Parfait Guiri<br />
+    Initiateur du Langage Néo<br />
+    📧 parfait.guiri@gmail.com<br />
+    📞 +225 05 55 70 9475
+  </p>
+
+  <h2>🌀 Mantra</h2>
+  <p>
+    Avec mon esprit, je guide la machine.<br />
+    Avec mes racines, je bâtis le futur.
+  </p>
+
+  <h2>📚 Chapitres du Livre</h2>
+  <ul>
+    <li>Chapitre 1 : Le Souffle Originel</li>
+    <li>Chapitre 2 : Le Langage des Ancêtres</li>
+    <li>Chapitre 3 : La Machine Vivante</li>
+    <li>Chapitre 4 : La Voix du Silicium</li>
+    <li>Chapitre 5 : Le Guide Néo</li>
+    <li>Chapitre 6 : La Touche Échappée</li>
+    <li>Chapitre 7 : La Lumière derrière l'écran</li>
+    <li>Chapitre 8 : L’Appel aux Jeunes</li>
+  </ul>
+
+  <div id="chapitre-description">
+    Le souffle originel est le mystère premier, la source d’où naît tout code et toute vie digitale.
+  </div>
+
+  <script>
+    function toggleFreq() {
+      const div = document.getElementById('frequencies');
+      div.style.display = (div.style.display === 'none') ? 'block' : 'none';
     }
-  }
+  </script>
 
-  // Rafraîchir l'animation environ 30 fois par seconde
-  setInterval(draw, 33);
+  <!-- SCRIPT DE LA PLUIE DE CODE MATRIX -->
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
 
-  // Ajuster la taille du canvas à la fenêtre quand elle change
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-</script>
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const letters = '01';
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array.from({length: columns}, () => Math.random() * -100);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0F0';
+      ctx.font = fontSize + 'px monospace';
+
+      drops.forEach((drop, i) => {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drop * fontSize);
+        if (drop * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        } else {
+          drops[i] += 1;
+        }
+      });
+    }
+    setInterval(drawMatrix, 33);
+  </script>
 </body>
 </html>
