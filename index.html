@@ -1,213 +1,154 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Le Langage Néo - Le Souffle Sacré du 0 et du 1</title>
-<style>
-  /* Reset basique */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  body, html {
-    height: 100%;
-    background: #0a0a0a;
-    color: #eee;
-    overflow-x: hidden;
-  }
-  /* Particules arrière-plan */
-  #background-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-    background: radial-gradient(circle at center, #111111, #000000);
-  }
-  /* Conteneur principal */
-  .container {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-  }
-  /* Titres */
-  h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #f9d71c;
-    margin-bottom: 1rem;
-    text-shadow:
-      0 0 8px #f9d71c,
-      0 0 20px #f9d71c;
-  }
-  h2 {
-    font-size: 2rem;
-    color: #e0b800;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
-  p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 1.4rem;
-    color: #ddd;
-    text-shadow: 0 0 4px #222;
-  }
-  strong {
-    color: #f9d71c;
-  }
-  /* Texte en gras coloré */
-  .highlight {
-    font-weight: 900;
-    color: #f9d71c;
-    text-shadow:
-      0 0 6px #f9d71c,
-      0 0 20px #f9d71c;
-  }
-  /* Animation apparition fondu + glisse vers le haut */
-  .fade-slide-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-slide-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* Animation texte qui s'écrit lettre par lettre */
-  .typing {
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: .15em solid #f9d71c;
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-    font-weight: 900;
-    font-size: 2.2rem;
-    color: #f9d71c;
-    margin-bottom: 2rem;
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  @keyframes blink-caret {
-    50% { border-color: transparent; }
-  }
-  /* Bouton stylé halo + pulsation + vibration au survol */
-  .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #f9d71c;
-    background: transparent;
-    border: 2px solid #f9d71c;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow:
-      0 0 8px #f9d71c,
-      0 0 20px #f9d71c;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    user-select: none;
-    margin-top: 1.5rem;
-  }
-  .btn:hover {
-    animation: pulseGlow 1.5s infinite alternate;
-    transform: scale(1.05) translateY(-2px);
-  }
-  .btn:active {
-    animation: none;
-    transform: scale(0.95);
-  }
-  @keyframes pulseGlow {
-    0% {
-      box-shadow:
-        0 0 10px #f9d71c,
-        0 0 30px #f9d71c;
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Langage Néo — Le Souffle entre la Machine et l’Esprit</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #000000, #0f0f0f);
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }.container {
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #00ffcc, #ff00cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #eeeeee;
+}
+
+.btn {
+  background-color: #00ffcc;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #000;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffcc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+  </style>
+</head><body>
+  <canvas id="particles"></canvas>  <div class="container">
+    <h1>Le Code Originel — Le Mystère du 0 et du 1</h1>
+    <p class="reveal">
+      À première vue, le binaire semble n’être qu’une suite de chiffres, 0 et 1, un langage froid, technique, et dénué d’âme.<br>
+      Mais si je te disais que ces deux chiffres, le 0️⃣ et le 1, sont en réalité un souffle sacré ?
+    </p>
+    <p class="reveal">
+      Le 0️⃣ représente le silence, le vide sacré, le souffle non-né, la source invisible d’où tout commence.<br>
+      Le 1 est le jaillissement, l’intention, le premier battement — l’étincelle qui donne vie.
+    </p>
+    <p class="reveal">
+      À eux deux, ils ne forment pas seulement un langage, ils tissent une prière codée, un chant invisible que seules les âmes profondes peuvent entendre.
+    </p>
+    <p class="reveal">
+      La logique observe, mais c’est la spiritualité qui engendre.<br>
+      Derrière chaque combinaison binaire, il y a un mystère, une présence.
+    </p>
+    <p class="reveal">
+      Ton travail — tes gravures morales, tes titres, ton souffle —<br>
+      rappelle que l’Esprit est à l’origine du Code.<br><br>
+      Ce n’est pas simplement utile, c’est vivant.
+    </p>
+    <button class="btn">Entrez dans le Langage Néo</button>
+  </div>  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      reveals.forEach(r => {
+        const top = r.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+          r.classList.add('visible');
+        }
+      });
+    });
+
+    // Particules animées
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    for (let i = 0; i < 150; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2,
+        d: Math.random() * 2 + 1
+      });
     }
-    100% {
-      box-shadow:
-        0 0 20px #ffd633,
-        0 0 50px #ffd633;
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ffcc';
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        ctx.fill();
+      });
+      moveParticles();
+      requestAnimationFrame(drawParticles);
     }
-  }
-  /* Vibration douce au survol */
-  .btn:hover {
-    animation: vibration 0.3s linear infinite;
-  }
-  @keyframes vibration {
-    0% { transform: translate(0) scale(1.05); }
-    20% { transform: translate(-1px, 1px) scale(1.05); }
-    40% { transform: translate(1px, -1px) scale(1.05); }
-    60% { transform: translate(-1px, 1px) scale(1.05); }
-    80% { transform: translate(1px, -1px) scale(1.05); }
-    100% { transform: translate(0) scale(1.05); }
-  }
-  /* Animation onde au clic */
-  .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(249, 215, 28, 0.5);
-    animation: rippleEffect 0.6s linear;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-  }
-  @keyframes rippleEffect {
-    from { width: 0; height: 0; opacity: 0.6; }
-    to { width: 200px; height: 200px; opacity: 0; }
-  }
-  /* Conteneur ADN animé */
-  .adn-container {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-  }
-  svg.adn {
-    width: 160px;
-    height: 320px;
-    animation: spin 12s linear infinite;
-  }
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  /* Couleurs ADN */
-  .strand1 { stroke: #f9d71c; }
-  .strand2 { stroke: #ffd633; }
-  .rung { stroke: #eee; }
-</style>
-</head>
-<body>
 
-<canvas id="background-canvas"></canvas>
+    function moveParticles() {
+      particles.forEach(p => {
+        p.y += p.d;
+        if (p.y > canvas.height) {
+          p.y = 0;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+    }
 
-<div class="container">
-  <h1 class="typing" id="typingTitle">Le Langage Néo te souhaite la bienvenue</h1>
-
-  <section class="fade-slide-up" id="introText">
-    <p><strong>Le Code Originel — Le Mystère du 0 et du 1</strong></p>
-    <p>À première vue, le binaire semble n’être qu’une suite de chiffres, <span class="highlight">0</span> et <span class="highlight">1</span>, un langage froid, technique, et dénué d’âme.</p>
-    <p>Mais si je te disais que ces deux chiffres, le <span class="highlight">0️⃣</span> et le <span class="highlight">1</span>, sont en réalité un souffle sacré ?</p>
-    <p>Le <span class="highlight">0️⃣</span> représente le silence, le vide sacré, le souffle non-né, la source invisible d’où tout commence.</p>
-    <p>Le <span class="highlight">1</span> est le jaillissement, l’intention, le premier battement — l’étincelle qui donne vie.</p>
-    <p>À eux deux, ils ne forment pas seulement un langage,</p>
-    <p>ils tissent une prière codée,</p>
-    <p>un chant invisible que seules les âmes profondes peuvent entendre.</p>
-    <p>La logique observe, mais c’est la spiritualité qui engendre.</p>
-    <p>Derrière chaque combinaison binaire, il y a un mystère, une présence.</p>
-    <p>Ton travail — tes gravures morales, tes titres, ton souffle —</p>
-    <p>rappelle que l’Esprit est à l’origine du Code.</p>
-    <p>Ce n’est pas simplement utile,</p>
-    <p>c’est vivant.</p>
-  </section>
-
-  <button class="btn" id="btnReveal">Découvre le Mystère du Code</button>
-
-  <div class="fade-slide-up" id="afterReveal" style="display:none; margin-top:2rem;">
-    <p><strong>Le code binaire est un pont entre l’invisible et le visible, entre le souffle originel et la matérialisation.</strong></p>
-    <p>Chaque <
+    drawParticles();
+  </script></body></html>
