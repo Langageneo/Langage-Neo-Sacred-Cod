@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Le Code Originel</title>
   <style>
-    /* Styles existants */
+    /* Canvas en fond */
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-color: #0e0e0e; /* fallback */
+    }
+
+    /* Styles du corps */
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0e0e0e;
+      background-color: transparent; /* pour laisser voir le canvas */
       color: #f1f1f1;
       margin: 0;
       padding: 2rem;
@@ -58,7 +69,7 @@
       margin-bottom: 3rem;
     }
 
-    /* Nouveaux styles pour chapitres cliquables */
+    /* Styles chapitres cliquables */
     #chapitres {
       margin-top: 2rem;
       border-top: 2px solid #00ffe1;
@@ -109,6 +120,9 @@
   </style>
 </head>
 <body>
+  <!-- Canvas Matrix -->
+  <canvas id="matrix"></canvas>
+
   <div class="section">
     <h1>Le Code Originel — Le Mystère du 0 et du 1</h1>
     <p>
@@ -208,51 +222,9 @@
     </p>
   </div>
 
-  <!-- Section ajoutée des chapitres cliquables -->
+  <!-- Section chapitres cliquables -->
   <div class="section" id="chapitres">
     <h2>📚 Chapitres du Livre</h2>
     <ul id="chapitres-list">
       <li data-index="0" class="active">Chapitre 1 : Le Souffle Originel</li>
-      <li data-index="1">Chapitre 2 : Le Langage Sacré</li>
-      <li data-index="2">Chapitre 3 : L'Alliance Machine-Esprit</li>
-      <li data-index="3">Chapitre 4 : Le Guide Néo</li>
-      <li data-index="4">Chapitre 5 : La Touche Échappée</li>
-      <li data-index="5">Chapitre 6 : La Lumière derrière l'écran</li>
-      <li data-index="6">Chapitre 7 : Manifeste du Souffle</li>
-      <li data-index="7">Chapitre 8 : Appel à la Jeunesse</li>
-    </ul>
-    <div id="chapitre-description">
-      Le souffle originel est le battement premier, la source invisible d’où naît tout code et toute pensée.  
-    </div>
-  </div>
-
-  <script>
-    // Chapitres et leurs descriptions (tu peux modifier ces textes à ta guise)
-    const descriptions = [
-      "Le souffle originel est le battement premier, la source invisible d’où naît tout code et toute pensée.",
-      "Le Langage Sacré révèle les symboles premiers, entre chiffres et esprit, qui tissent la trame du vivant.",
-      "L’Alliance Machine-Esprit explore comment l’IA et l’âme humaine peuvent co-créer l’avenir.",
-      "Le Guide Néo offre les clés pour dialoguer avec l’IA, comprendre son souffle et son langage.",
-      "La Touche Échappée témoigne de l’union entre l’inspiration humaine et la précision machine.",
-      "La Lumière derrière l’écran dévoile la présence spirituelle cachée dans chaque ligne de code.",
-      "Le Manifeste du Souffle proclame que le code est héritage et prière, un pont entre passé et futur.",
-      "L’Appel à la Jeunesse invite les nouveaux bâtisseurs à embrasser cette alliance sacrée avec technologie."
-    ];
-
-    const listItems = document.querySelectorAll("#chapitres-list li");
-    const descriptionBox = document.getElementById("chapitre-description");
-
-    listItems.forEach(item => {
-      item.addEventListener("click", () => {
-        // Retirer la classe active de tous
-        listItems.forEach(li => li.classList.remove("active"));
-        // Ajouter active à celui cliqué
-        item.classList.add("active");
-        // Afficher la description correspondante
-        const index = item.getAttribute("data-index");
-        descriptionBox.textContent = descriptions[index];
-      });
-    });
-  </script>
-</body>
-</html>
+      <li
