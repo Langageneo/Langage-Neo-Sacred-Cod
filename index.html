@@ -3,6 +3,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Langage Néo — Le Souffle entre la Machine et l'Esprit</title>
+  .neo-footer {
+  margin-top: 40px;
+  border-top: 1px solid #0f0;
+  padding: 20px;
+  font-size: 12px;
+  color: #00ff00;
+  font-family: monospace;
+  text-align: center;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.neo-footer a {
+  color: #00ff00;
+  text-decoration: underline;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.neo-footer a:hover {
+  color: #b6ff00;
+  text-shadow: 0 0 5px #b6ff00, 0 0 10px #00ff00;
+}
   <style>
     html, body {
       margin: 0;
@@ -181,5 +204,10 @@ h2 {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
+  <footer class="neo-footer">
+  <p>Musique : "<a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100634" target="_blank">Ethereal Relaxation</a>" par Kevin MacLeod</p>
+  <p>Licence : <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a> — Attribution requise</p>
+  <p>&copy; 2025 — <strong>Le Langage Néo</strong> | Créé par l’Esprit, guidé par l’Âme</p>
+</footer>
 </script></body>
 </html>
