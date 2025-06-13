@@ -67,7 +67,7 @@ tout développeur, artiste ou penseur sensible au souffle du Langage Néo est le
 **Parfait Guiri**  
 Initiateur du Langage Néo  
 📫 parfait.guiri@gmail.com
-
++2250555709475
 ---
 
 ## 🌀 Mantra
