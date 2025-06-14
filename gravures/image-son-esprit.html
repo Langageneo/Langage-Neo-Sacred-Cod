@@ -1,0 +1,41 @@
+<!-- image-son-esprit.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gravure Image-Son-Esprit</title>
+  <style>
+    body {
+      background: black;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <!-- Colle ici ton code SVG image-son-esprit -->
+  <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="display:block; margin: 0 auto;">
+    <!-- Cercles -->
+    <circle cx="150" cy="50" r="40" fill="#3b82f6" />
+    <circle cx="240" cy="180" r="40" fill="#f97316" />
+    <circle cx="60"  cy="180" r="40" fill="#22c55e" />
+    <!-- Textes -->
+    <text x="150" y="55" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Image</text>
+    <text x="240" y="185" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Son</text>
+    <text x="60"  y="185" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Esprit</text>
+    <!-- Flèches -->
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" fill="#ffffff">
+        <polygon points="0 0, 10 3.5, 0 7" />
+      </marker>
+    </defs>
+    <line x1="175" y1="60" x2="215" y2="160" stroke="white" stroke-width="3" marker-end="url(#arrowhead)" />
+    <line x1="225" y1="160" x2="85" y2="160" stroke="white" stroke-width="3" marker-end="url(#arrowhead)" />
+    <line x1="95" y1="160" x2="125" y2="60" stroke="white" stroke-width="3" marker-end="url(#arrowhead)" />
+  </svg>
+</body>
+</html>
