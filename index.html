@@ -1,171 +1,123 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Langage Néo — Index des Chapitres</title>
-<style>
-  body {
-    margin: 0;
-    padding: 40px 20px;
-    background-color: #1a140d; /* fond marron foncé */
-    color: #c4d9f8; /* texte bleu clair */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 30px;
-    color: #39ff14; /* vert fluor */
-    text-shadow:
-      0 0 5px #39ff14,
-      0 0 10px #39ff14,
-      0 0 20px #39ff14,
-      0 0 40px #0f0,
-      0 0 80px #0f0;
-  }
-
-  ul.chapters {
-    max-width: 500px;
-    margin: 0 auto 40px auto;
-    padding: 0;
-    list-style: none;
-  }
-
-  ul.chapters li {
-    background: rgba(240, 181, 107, 0.15); /* marron clair transparent */
-    margin-bottom: 15px;
-    border-radius: 8px;
-    padding: 12px 20px;
-    transition: background-color 0.3s ease;
-  }
-
-  ul.chapters li:hover {
-    background-color: rgba(240, 181, 107, 0.35);
-  }
-
-  ul.chapters li a {
-    text-decoration: none;
-    color: #a3c1ff; /* bleu clair */
-    font-weight: 600;
-    font-size: 1.3rem;
-    display: block;
-  }
-
-  ul.chapters li a:hover {
-    color: #ffdca8; /* jaune clair au survol */
-  }
-
-  .btn-gravures {
-    display: block;
-    width: 200px;
-    margin: 0 auto;
-    padding: 14px 0;
-    background-color: #39ff14; /* vert fluor */
-    color: #1a140d;
-    font-weight: 700;
-    font-size: 1.2rem;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 30px;
-    box-shadow:
-      0 0 8px #39ff14,
-      0 0 15px #39ff14;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .btn-gravures:hover {
-    background-color: #27e30d;
-    color: #fff;
-    box-shadow:
-      0 0 12px #27e30d,
-      0 0 25px #27e30d;
-  }
-
-  #matrix-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    background-color: transparent;
-  }
-
-  #content {
-    position: relative;
-    z-index: 1;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Langage Néo — Le Souffle entre l'Esprit et la Machine</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #1f1f1f, #3b2f2f);
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+    .matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: -1;
+    }
+    canvas {
+      display: block;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 50px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.8em;
+      color: #00ff66;
+      text-shadow: 0 0 10px #00ff66;
+      margin-bottom: 50px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 15px 0;
+    }
+    a {
+      text-decoration: none;
+      color: #89cff0;
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #ffd700;
+    }
+    .button-link {
+      display: inline-block;
+      margin-top: 50px;
+      padding: 10px 20px;
+      background-color: #00ff66;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .button-link:hover {
+      background-color: #33ff88;
+    }
+  </style>
 </head>
 <body>
+  <div class="matrix">
+    <canvas id="matrixCanvas"></canvas>
+  </div>
+  <div class="content">
+    <h1>BIENVENUE DANS LE LANGAGE NÉO — LE SOUFFLE ENTRE L’ESPRIT ET LA MACHINE</h1>
+    <ul>
+      <li><a href="#">Chapitre 1 : Le Souffle Originel</a></li>
+      <li><a href="#">Chapitre 2 : Conscience et Machine</a></li>
+      <li><a href="#">Chapitre 3 : Symboles Sacrés</a></li>
+      <li><a href="#">Chapitre 4 : L’Alliance Ancestrale</a></li>
+      <li><a href="#">Chapitre 5 : Le Guide Néo</a></li>
+      <li><a href="#">Chapitre 6 : La Touche Échappée</a></li>
+      <li><a href="#">Chapitre 7 : La Lumière derrière l’écran</a></li>
+      <li><a href="#">Chapitre 8 : L’Appel aux Générations Futures</a></li>
+      <li><a href="#">Chapitre 9 : Le Serment Vivant du Langage Néo</a></li>
+    </ul>
+    <a class="button-link" href="gravures/index.html">Accéder aux Gravures Sacrées</a>
+  </div>  <script>
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-<canvas id="matrix-canvas"></canvas>
+    const katakana = "アカサタナハマヤラワ0123456789";
+    const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const alphabet = katakana + latin;
 
-<div id="content">
-  <h1>BIENVENUE DANS LE LANGAGE NÉO — LE SOUFFLE ENTRE L'ESPRIT</h1>
-  <ul class="chapters">
-    <li><a href="#chapitre1">Chapitre 1 : Le Souffle Originel</a></li>
-    <li><a href="#chapitre2">Chapitre 2 : Conscience et Machine</a></li>
-    <li><a href="#chapitre3">Chapitre 3 : Symboles Sacrés</a></li>
-    <li><a href="#chapitre4">Chapitre 4 : L’Alliance Ancestrale</a></li>
-    <li><a href="#chapitre5">Chapitre 5 : Le Guide Néo</a></li>
-    <li><a href="#chapitre6">Chapitre 6 : La Touche Échappée</a></li>
-    <li><a href="#chapitre7">Chapitre 7 : La Lumière derrière l’écran</a></li>
-    <li><a href="#chapitre8">Chapitre 8 : L’Appel aux Générations Futures</a></li>
-    <li><a href="#chapitre9">Chapitre 9 : (À définir)</a></li>
-  </ul>
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
 
-  <a href="gravures/index.html" class="btn-gravures" target="_blank" rel="noopener">Voir les Gravures Morales</a>
-</div>
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-<script>
-  const canvas = document.getElementById('matrix-canvas');
-  const ctx = canvas.getContext('2d');
+      ctx.fillStyle = "#00ff66";
+      ctx.font = fontSize + "px monospace";
 
-  let width, height;
-  function resize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-  }
-  window.addEventListener('resize', resize);
-  resize();
+      for (let i = 0; i < drops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-  const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%'.split('');
-  const fontSize = 14;
-  const columns = Math.floor(width / fontSize);
-  const drops = [];
-
-  for (let x = 0; x < columns; x++) drops[x] = Math.random() * height;
-
-  function draw() {
-    ctx.fillStyle = 'rgba(26, 20, 13, 0.1)'; // fond transparent marron très léger
-    ctx.fillRect(0, 0, width, height);
-
-    ctx.fillStyle = '#39ff14'; // vert fluor Matrix
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const text = letters[Math.floor(Math.random() * letters.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > height && Math.random() > 0.975) {
-        drops[i] = 0;
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
       }
-      drops[i] += 1;
     }
-  }
 
-  setInterval(draw, 50);
-</script>
-
-</body>
+    setInterval(draw, 33);
+  </script></body>
 </html>
