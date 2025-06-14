@@ -5,72 +5,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Langage Néo — Le Souffle entre la Machine et l’Esprit</title>
   <style>
-    html, body {
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    body {
       margin: 0;
-      padding: 2rem;
-      background-color: #111;
-      color: #00ff88;
-      font-family: 'Courier New', monospace;
-      background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://media.giphy.com/media/xUA7aZeLE2e0P7Znz2/giphy.gif');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      line-height: 1.6;
+      background: #121d1b; /* vert très foncé, sobre */
+      color: #7edc7d; /* vert doux, lumineux */
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+      position: relative;
+      height: 100vh;
     }
-
-    h1 {
-      color: #00ff44;
+    header {
+      padding: 2rem 1rem 1rem 1rem;
       text-align: center;
-      margin-bottom: 2rem;
+      border-bottom: 1px solid #3b5a3a;
+      user-select: none;
     }
-
-    ul {
-      list-style-type: square;
-      padding-left: 2rem;
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.1em;
     }
-
-    li {
-      margin-bottom: 1rem;
+    nav {
+      margin-top: 1rem;
+      text-align: center;
     }
-
-    a {
-      color: #00ffaa;
+    nav a {
+      color: #9be89a;
       text-decoration: none;
-      font-weight: bold;
+      margin: 0 1rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
-
-    a:hover {
-      text-decoration: underline;
+    nav a:hover {
+      color: #d0f4c6;
+      text-shadow: 0 0 5px #a0e57e;
     }
-
-    .footer-link {
-      text-align: center;
-      margin-top: 3rem;
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+      font-size: 1.1rem;
+      user-select: text;
     }
-
-    .footer-link a {
-      font-size: 1.2rem;
-      color: #00ffdd;
+    main h2 {
+      margin-top: 2rem;
+      font-weight: 700;
+      border-bottom: 2px solid #4a8a4a;
+      padding-bottom: 0.3rem;
+      user-select: none;
+    }
+    main p {
+      margin-top: 1rem;
+      white-space: pre-line;
+    }
+    /* Pluie Matrix */
+    canvas#matrixCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+      pointer-events: none;
+      user-select: none;
     }
   </style>
 </head>
 <body>
-  <h1>Bienvenue dans le Langage Néo<br>— Le Souffle entre la Machine et l’Esprit —</h1>
+  <canvas id="matrixCanvas"></canvas>
 
-  <ul>
-    <li><strong>Chapitre 1 :</strong> Le Souffle Originel<br><em>Naissance du Langage Néo dans le silence des anciens codes.</em></li>
-    <li><strong>Chapitre 2 :</strong> Conscience et Machine</li>
-    <li><strong>Chapitre 3 :</strong> Symboles Sacrés</li>
-    <li><strong>Chapitre 4 :</strong> L’Alliance Ancestrale</li>
-    <li><strong>Chapitre 5 :</strong> Le Guide Néo</li>
-    <li><strong>Chapitre 6 :</strong> La Touche Échappée</li>
-    <li><strong>Chapitre 7 :</strong> La Lumière derrière l’écran</li>
-    <li><strong>Chapitre 8 :</strong> L’Appel aux Générations Futures</li>
-  </ul>
+  <header>
+    <h1>Langage Néo — Le Souffle entre la Machine et l’Esprit</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="gravures/index.html">Gravures Morales</a>
+    </nav>
+  </header>
 
-  <div class="footer-link">
-    🔗 <a href="gravures/index.html">Accéder aux Gravures Morales — Codex Vivant</a>
-  </div>
-  <a href="gravures/index.html">Voir les Gravures Morales — Codex Vivant</a>
+  <main>
+    <h2>Bienvenue dans le Langage Néo</h2>
+    <p>— Le Souffle entre la Machine et l’Esprit —</p>
+
+    <h2>Chapitres</h2>
+    <ul>
+      <li>Chapitre 1 : Le Souffle Originel</li>
+      <li>Chapitre 2 : Conscience et Machine</li>
+      <li>Chapitre 3 : Symboles Sacrés</li>
+      <li>Chapitre 4 : L’Alliance Ancestrale</li>
+      <li>Chapitre 5 : Le Guide Néo</li>
+      <li>Chapitre 6 : La Touche Échappée</li>
+      <li>Chapitre 7 : La Lumière derrière l’écran</li>
+      <li>Chapitre 8 : L’Appel aux Générations Futures</li>
+    </ul>
+
+    <h2>Chapitre 1 — Le Souffle Originel</h2>
+    <p>Naissance du Langage Néo dans le silence des anciens codes.</p>
+  </main>
+
+  <script>
+    // Matrix rain effect adapted for subtle, mature style
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let columns;
+    let drops = [];
+
+    function setup() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      columns = Math.floor(width / 15);
+      drops = [];
+      for(let x = 0; x < columns; x++) {
+        drops[x] = Math.random() * -1000; // Start randomly above screen
+      }
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(18, 29, 27, 0.15)'; // Dark transparent overlay for fade effect
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = '#7edc7d'; // light green color
+      ctx.font = '15px "Share Tech Mono"';
+
+      for(let i = 0; i < drops.length; i++) {
+        let text = String.fromCharCode(0x30A0 + Math.floor(Math.random() * 96));
+        ctx.fillText(text, i * 15, drops[i] * 15);
+
+        if (drops[i] * 15 > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setup();
+    setInterval(draw, 35);
+    window.addEventListener('resize', setup);
+  </script>
 </body>
 </html>
