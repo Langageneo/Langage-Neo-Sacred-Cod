@@ -1,173 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gravures Sacrées — Langage Néo</title>
+  <meta charset="UTF-8">
+  <title>Gravures Sacrées</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: #3b2f2f;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      color: #f0e6d2;
-      position: relative;
-      min-height: 100vh;
-    }
-    .matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.15;
-    }
-    canvas {
-      display: block;
-    }
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 60px 20px 40px 20px;
-      max-width: 900px;
-      margin: 0 auto;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
+      padding: 20px;
     }
-    h1 {
-      font-size: 2.4em;
-      color: #c19a6b; /* un beau marron doux */
-      margin-bottom: 30px;
-      text-shadow: 0 0 10px #c19a6b;
-    }
-    img.header-image {
-      max-width: 80%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(193, 154, 107, 0.7);
-      margin-bottom: 40px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-    }
-    li {
-      margin: 15px 0;
-      cursor: pointer;
-      font-size: 1.2em;
-      color: #d9cbb1;
-      transition: color 0.3s;
-      user-select: none;
-    }
-    li:hover {
-      color: #e7d9b9;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-      font-weight: 600;
-    }
-    .description {
-      display: none;
-      font-size: 1em;
-      margin-top: 6px;
-      margin-left: 15px;
-      color: #e7d9b9;
-      max-width: 600px;
-    }
-    .button-link {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 28px;
-      background-color: #c19a6b;
-      color: #3b2f2f;
-      font-weight: bold;
-      border-radius: 10px;
-      text-decoration: none;
-      box-shadow: 0 0 8px rgba(193, 154, 107, 0.8);
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .button-link:hover {
-      background-color: #d1af7f;
-      color: #1a140f;
+    iframe {
+      border: none;
+      margin: 30px auto;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <div class="matrix">
-    <canvas id="matrixCanvas"></canvas>
-  </div>
+  <h1>Gravures Sacrées</h1>
 
-  <div class="content">
-    <h1>GRAVURES SACRÉES — LE LANGAGE NÉO</h1>
-    <img src="../image-sacree.png" alt="Gravure sacrée" class="header-image" />
+  <h2>Image – Son – Esprit</h2>
+  <iframe src="image-son-esprit.html" width="320" height="320"></iframe>
 
-    <ul>
-      <li onclick="toggleDescription(0)"><a>Gravure 1 : Le Souffle Originel</a>
-        <div class="description">Cette gravure symbolise le souffle vital qui relie passé et présent.</div>
-      </li>
-      <li onclick="toggleDescription(1)"><a>Gravure 2 : Mémoire Ancestrale</a>
-        <div class="description">Un hommage aux racines profondes du savoir transmis par les ancêtres.</div>
-      </li>
-      <li onclick="toggleDescription(2)"><a>Gravure 3 : L’Alliance Sacrée</a>
-        <div class="description">L’union entre l’esprit humain et la machine à travers les âges.</div>
-      </li>
-      <li onclick="toggleDescription(3)"><a>Gravure 4 : Le Langage Néo</a>
-        <div class="description">Le code vivant, fruit de la collaboration entre la mémoire et la technologie.</div>
-      </li>
-    </ul>
-
-    <a class="button-link" href="../index.html">Retour à l’accueil</a>
-  </div>
-
-  <script>
-    const canvas = document.getElementById("matrixCanvas");
-    const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const katakana = "アカサタナハマヤラワ0123456789";
-    const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const alphabet = katakana + latin;
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(59,47,47,0.05)";  // fond presque transparent marron foncé
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#c19a6b";  // couleur marron douce
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 33);
-
-    function toggleDescription(index) {
-      const descriptions = document.querySelectorAll(".description");
-      descriptions.forEach((desc, i) => {
-        desc.style.display = i === index
-          ? (desc.style.display === "block" ? "none" : "block")
-          : "none";
-      });
-    }
-  </script>
+  <h2>Esprit = Énergie = Matière</h2>
+  <iframe src="esprit-energie-matiere.html" width="320" height="320"></iframe>
 </body>
 </html>
