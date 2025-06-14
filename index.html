@@ -8,10 +8,10 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #2b2b2b, #3e2f2f);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #3a2f1f, #5c4433);
       color: #ffffff;
-      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-y: auto; /* corrige le blocage de défilement */
     }
     .matrix {
       position: fixed;
@@ -19,6 +19,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background: transparent;
       z-index: -1;
     }
     canvas {
@@ -27,38 +28,34 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 50px 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 60px 30px;
       text-align: center;
     }
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       color: #00ff66;
-      text-shadow: 0 0 15px #00ff66;
-      margin-bottom: 40px;
+      text-shadow: 0 0 10px #00ff66;
+      margin-bottom: 60px;
     }
     ul {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
-      max-width: 600px;
     }
     li {
       margin: 18px 0;
     }
     a {
       text-decoration: none;
-      font-size: 1.3em;
       color: #89cff0;
-      transition: color 0.3s ease;
+      font-size: 1.4em;
+      transition: color 0.3s;
     }
     a:hover {
       color: #ffd700;
     }
     .button-link {
       display: inline-block;
-      margin-top: 40px;
+      margin-top: 50px;
       padding: 12px 24px;
       background-color: #00ff66;
       color: black;
@@ -66,7 +63,7 @@
       border-radius: 10px;
       text-decoration: none;
       font-size: 1.1em;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s;
     }
     .button-link:hover {
       background-color: #33ff88;
@@ -103,21 +100,19 @@
     const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const alphabet = katakana + latin;
 
-    const fontSize = 14;
+    const fontSize = 16;
     const columns = canvas.width / fontSize;
-    const drops = Array.from({ length: columns }).fill(1);
+    const drops = Array(Math.floor(columns)).fill(1);
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       ctx.fillStyle = "#00ff66";
       ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
         const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
