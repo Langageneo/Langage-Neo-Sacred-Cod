@@ -11,7 +11,29 @@
       text-align: center;
       padding: 20px;
       overflow-x: hidden;
+      position: relative;
+      z-index: 0;
     }
+
+    /* Animation légère et uniforme en arrière-plan */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, rgba(14,165,233,0.1), transparent 70%);
+      animation: pulseLight 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    @keyframes pulseLight {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+
     iframe {
       border: none;
       margin: 30px auto;
@@ -20,24 +42,21 @@
     pre {
       font-size: 16px;
       line-height: 1.2;
+      text-align: left;
       white-space: pre-wrap;
       display: inline-block;
-      text-align: left;
       position: relative;
       z-index: 10;
-      color: white;
     }
-    /* Colorisation précise dans le pre avec spans */
-    .color-esprit { color: #22c55e; }
-    .color-energie { color: #f59e0b; }
-    .color-matiere { color: #ef4444; }
-    .color-image { color: #3b82f6; }
-    .color-son { color: #f97316; }
 
-    /* Animation rotation mandala */
+    /* Mandala avec rotation plus rapide et visible */
     @keyframes rotation {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
     .mandala {
       margin: 40px auto 60px;
@@ -45,8 +64,8 @@
       height: 150px;
       border: 5px solid #10b981;
       border-radius: 50%;
-      animation: rotation 20s linear infinite;
-      box-shadow: 0 0 15px #10b981;
+      animation: rotation 10s linear infinite; /* plus rapide */
+      box-shadow: 0 0 25px #10b981; /* plus lumineux */
       position: relative;
       z-index: 5;
     }
@@ -56,20 +75,26 @@
       border: 5px solid #22c55e;
       border-radius: 50%;
       top: 20px; left: 20px; right: 20px; bottom: 20px;
-      animation: rotation 10s linear infinite reverse;
+      animation: rotation 7s linear infinite reverse; /* plus rapide */
+      box-shadow: 0 0 15px #22c55e;
     }
     .mandala:after {
       top: 40px; left: 40px; right: 40px; bottom: 40px;
       border-color: #f59e0b;
-      animation-duration: 15s;
+      animation-duration: 9s; /* plus rapide */
+      box-shadow: 0 0 15px #f59e0b;
     }
-    /* Lueur sur titres */
+
+    /* Effet léger de lueur sur les titres */
     h1, h2 {
       text-shadow:
         0 0 5px #0ea5e9,
         0 0 10px #0ea5e9,
         0 0 20px #0ea5e9;
+      position: relative;
+      z-index: 10;
     }
+
     a {
       background-color: #0ea5e9;
       color: white;
@@ -79,6 +104,8 @@
       font-family: sans-serif;
       box-shadow: 0 0 10px #0ea5e9;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 10;
     }
     a:hover {
       background-color: #0284c7;
@@ -97,35 +124,35 @@
 
   <h2>Schéma Sacré : Cycle Énergie–Matière–Esprit (Couleur)</h2>
   <pre>
-<span class="color-esprit">↻</span>
-<span class="color-esprit">Esprit</span>
+<span style="color:#10b981;">↻</span>
+<span style="color:#22c55e;">Esprit</span>
    ↓
-<span class="color-energie">Énergie</span>
+<span style="color:#f59e0b;">Énergie</span>
    ↓
-<span class="color-matiere">Matière</span>
-   <span class="color-esprit">↺.-.</span>
+<span style="color:#ef4444;">Matière</span>
+   <span style="color:#10b981;">↺.-.</span>
    (   )
     '-'  
    / | \
   /  |  \
- <span class="color-esprit">Esprit</span>
+ <span style="color:#22c55e;">Esprit</span>
     =
- <span class="color-energie">Energie</span>
+ <span style="color:#f59e0b;">Energie</span>
     =
-  <span class="color-matiere">Matière</span>
+  <span style="color:#ef4444;">Matière</span>
 ╔════════╗
-║  <span class="color-image">IMAGE</span> ║
+║  <span style="color:#3b82f6;">IMAGE</span> ║
 ╚══╦═══╦═╝
    ║   ║
    ║   ▼
 ╔══╩══╗ ╔══╩══╗
-║  <span class="color-esprit">ESPRIT</span> ║ ║  <span class="color-son">SON</span>  ║
+║  <span style="color:#22c55e;">ESPRIT</span> ║ ║  <span style="color:#f97316;">SON</span>  ║
 ╚══╦═══╝ ╚══╦═══╝
    ║       ║
    ╚═══════╝
     (Cercle)
 ╔══════════╗      ╔════════╗      ╔════════╗
-║  <span class="color-image">IMAGE</span>   ║ ───► ║   <span class="color-son">SON</span>  ║ ───► ║ <span class="color-esprit">ESPRIT</span> ║
+║  <span style="color:#3b82f6;">IMAGE</span>   ║ ───► ║   <span style="color:#f97316;">SON</span>  ║ ───► ║ <span style="color:#22c55e;">ESPRIT</span> ║
 ╚══════════╝      ╚════════╝      ╚════════╝
        ▲                             │
        └─────────────────────────────┘
@@ -134,7 +161,9 @@
   <div class="mandala"></div>
 
   <div style="text-align:center; margin-top: 40px;">
-    <a href="chapitre9-gravures.html">Voir les Gravures du Chapitre 9</a>
+    <a href="chapitre9-gravures.html">
+      Voir les Gravures du Chapitre 9
+    </a>
   </div>
 </body>
 </html>
