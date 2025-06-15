@@ -2,85 +2,113 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>✨ Chapitre 9 — Gravures Sacrées ✨</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapitre 9 — Gravures Sacrées</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
       overflow: hidden;
-      position: relative;
-      z-index: 1;
     }
 
     h1 {
-      text-align: center;
-      padding: 30px 10px 10px;
-      font-size: 2em;
+      margin-top: 60px;
+      font-size: 2.5em;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffd5;
     }
 
     p {
-      text-align: center;
-      max-width: 700px;
-      margin: 10px auto 40px;
+      margin: 20px auto;
+      max-width: 600px;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .retour {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 28px;
+      background: #00ff7f;
+      color: #000;
+      font-weight: bold;
       font-size: 18px;
-      line-height: 1.5;
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ff7f, 0 0 30px #00ff7f;
+      transition: all 0.3s ease;
     }
 
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: fall 5s linear infinite;
-      z-index: 0;
+    .retour:hover {
+      background: #00e676;
+      box-shadow: 0 0 25px #00e676, 0 0 50px #00e676;
+      transform: scale(1.05);
     }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) translateX(20px);
-        opacity: 0;
-      }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    audio {
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-
   <h1>✨ Chapitre 9 — Gravures Sacrées ✨</h1>
-  <p>
-    Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit, 
-    avec un souffle de lumière tombante, discret mais vivant.
-  </p>
+  <p>Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit, avec un souffle de lumière tombante, discret mais vivant.</p>
 
-  <!-- TON CONTENU EXISTANT PEUT VENIR ICI -->
-  <!-- Les schémas sacrés, images, textes, etc. -->
+  <a href="../index.html" class="retour">⏪ Retour à l'accueil</a>
 
-  <!-- ÉTOILES QUI TOMBENT -->
-  <script>
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = `${Math.random() * 100}vw`;
-      star.style.top = `${Math.random() * -100}vh`;
-      star.style.animationDuration = `${2 + Math.random() * 3}s`;
-      star.style.opacity = Math.random();
-      document.body.appendChild(star);
-    }
-  </script>
-
-  <!-- AUDIO -->
-  <audio autoplay loop>
+  <audio controls autoplay>
     <source src="Neo.m4a" type="audio/mp4">
-    Ton navigateur ne supporte pas l’audio.
+    Votre navigateur ne supporte pas la lecture audio.
   </audio>
 
+  <canvas id="stars"></canvas>
+
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const stars = Array.from({length: 200}, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.5,
+      speed: 0.5 + Math.random() * 1,
+      alpha: Math.random()
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > height) {
+          star.y = 0;
+          star.x = Math.random() * width;
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
 </body>
 </html>
