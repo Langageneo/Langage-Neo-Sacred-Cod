@@ -11,6 +11,11 @@
       color: white;
       font-family: 'Arial', sans-serif;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
     canvas {
@@ -24,55 +29,62 @@
     .content {
       position: relative;
       z-index: 1;
+      width: 90vw;
+      max-width: 700px;
       text-align: center;
-      padding: 60px 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       color: #00ffcc;
       text-shadow: 0 0 12px #00ffcc;
+      margin-bottom: 10px;
     }
 
     p {
-      max-width: 600px;
-      margin: 20px auto;
-      font-size: 1.1em;
+      font-size: 1.3em;
       line-height: 1.6;
+      margin-bottom: 30px;
     }
 
     audio {
-      margin-top: 30px;
-      width: 90%;
-      max-width: 500px;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 50px;
     }
 
     .btn-with-squares {
-      display: inline-block;
-      margin: 30px 15px;
-      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      padding: 30px 0;
       background-color: #ffd700;
       color: black;
-      border-radius: 12px;
+      border-radius: 20px;
       font-weight: bold;
+      font-size: 2.5em;
       text-decoration: none;
-      box-shadow: 0 0 15px #ffd700;
+      box-shadow: 0 0 20px #ffd700;
       transition: transform 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
     }
 
     .btn-with-squares:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #ffee55;
+      transform: scale(1.1);
+      box-shadow: 0 0 35px #ffee55;
     }
 
     .btn-with-squares span {
       display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin: 0 4px;
-      border-radius: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
       animation: rotateColor 2s linear infinite;
     }
 
@@ -94,6 +106,32 @@
       50% { transform: rotate(180deg); }
       100% { transform: rotate(360deg); }
     }
+
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .btn-return {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.8em;
+      background-color: #00ff88;
+      color: black;
+      border-radius: 15px;
+      text-decoration: none;
+      box-shadow: 0 0 15px #00ff88;
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+    .btn-return:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #00ff88;
+    }
+
   </style>
 </head>
 <body>
@@ -110,20 +148,19 @@
       Votre navigateur ne supporte pas l’audio.
     </audio>
 
-    <br><br>
+    <div class="buttons-container">
+      <a href="chapitre9-gravures.html" class="btn-with-squares">
+        Chapitre 9
+        <span></span><span></span><span></span>
+      </a>
 
-    <a href="chapitre9-gravures.html" class="btn-with-squares">
-      Chapitre 9 <br />
-      <span></span><span></span><span></span>
-    </a>
+      <a href="chapitre9-gravures.html" class="btn-with-squares">
+        Chapitre X
+        <span></span><span></span><span></span>
+      </a>
+    </div>
 
-    <a href="chapitre9-gravures.html" class="btn-with-squares">
-      Chapitre X <br />
-      <span></span><span></span><span></span>
-    </a>
-
-    <br><br>
-    <a href="../index.html" class="btn-with-squares">⏪ Accueil</a>
+    <a href="../index.html" class="btn-return">⏪ Accueil</a>
   </div>
 
   <script>
