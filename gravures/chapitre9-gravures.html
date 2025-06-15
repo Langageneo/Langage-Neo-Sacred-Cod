@@ -47,61 +47,52 @@
       max-width: 500px;
     }
 
-    .button {
-      margin-top: 40px;
+    .btn-with-squares {
       display: inline-block;
-      padding: 12px 24px;
-      background-color: #00ff88;
+      margin: 30px 15px;
+      padding: 15px 25px;
+      background-color: #ffd700;
       color: black;
-      text-decoration: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: bold;
-      box-shadow: 0 0 10px #00ff88;
+      text-decoration: none;
+      box-shadow: 0 0 15px #ffd700;
       transition: transform 0.2s ease;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00ff88;
-    }
-
-    /* ===== Animation cubes ===== */
-    .loader {
       position: relative;
-      width: 100%;
-      height: 200px;
-      margin: 40px auto;
-      background-color: gold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 1em;
-      box-shadow: 0 0 30px gold;
+      overflow: hidden;
     }
 
-    .loader span {
-      position: absolute;
-      width: 6em;
-      height: 6em;
-      border: 0.25em solid white;
-      border-radius: 1em;
-      mix-blend-mode: screen;
-      animation: de-rotating 4s linear infinite;
+    .btn-with-squares:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ffee55;
     }
 
-    .loader span:nth-child(1) { top: 1em; left: 2em; background: blue; }
-    .loader span:nth-child(2) { top: 3em; left: 5em; background: green; }
-    .loader span:nth-child(3) { top: 2em; left: 8em; background: violet; }
-    .loader span:nth-child(4) { top: 3em; left: 11em; background: red; }
-    .loader span:nth-child(5) { top: 1em; left: 14em; background: lightcoral; }
+    .btn-with-squares span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      border-radius: 2px;
+      animation: rotateColor 2s linear infinite;
+    }
 
-    @keyframes de-rotating {
-      0%, 100% {
-        transform: rotate(0deg) scale(0.5);
-      }
-      50% {
-        transform: rotate(-180deg) scale(1.2);
-      }
+    .btn-with-squares span:nth-child(1) {
+      background-color: blue;
+      animation-delay: 0s;
+    }
+    .btn-with-squares span:nth-child(2) {
+      background-color: green;
+      animation-delay: 0.2s;
+    }
+    .btn-with-squares span:nth-child(3) {
+      background-color: violet;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes rotateColor {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -110,26 +101,29 @@
   <div class="content">
     <h1>✨ Chapitre 9 — Gravures Sacrées ✨</h1>
     <p>
-      Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit, 
+      Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit,
       avec un souffle de lumière tombante, discret mais vivant.
     </p>
 
-    <!-- Animation des cubes -->
-    <div class="loader">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
     <audio controls>
-      <source src="Neo.m4a" type="audio/mp4">
+      <source src="../Neo/Neo.m4a" type="audio/mp4">
       Votre navigateur ne supporte pas l’audio.
     </audio>
 
     <br><br>
-    <a href="../index.html" class="button">⏪ Retour à l'accueil</a>
+
+    <a href="chapitre9-gravures.html" class="btn-with-squares">
+      Chapitre 9 <br />
+      <span></span><span></span><span></span>
+    </a>
+
+    <a href="chapitre9-gravures.html" class="btn-with-squares">
+      Chapitre X <br />
+      <span></span><span></span><span></span>
+    </a>
+
+    <br><br>
+    <a href="../index.html" class="btn-with-squares">⏪ Accueil</a>
   </div>
 
   <script>
