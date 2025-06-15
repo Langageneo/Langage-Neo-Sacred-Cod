@@ -7,41 +7,12 @@
     html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       background: black;
       overflow: hidden;
-      color: white;
       font-family: Arial, sans-serif;
+      color: #ffffff;
       text-align: center;
-    }
-
-    h1 {
-      margin-top: 60px;
-      font-size: 2em;
-      text-shadow: 0 0 8px #0ea5e9, 0 0 16px #22d3ee;
-    }
-
-    p {
-      max-width: 600px;
-      margin: 20px auto;
-      line-height: 1.6;
-      font-size: 18px;
-    }
-
-    a.button {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
-      background: #0ea5e9;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      box-shadow: 0 0 12px #0ea5e9;
-      transition: all 0.3s ease;
-    }
-
-    a.button:hover {
-      background: #0284c7;
-      box-shadow: 0 0 25px #0284c7;
     }
 
     canvas {
@@ -50,67 +21,124 @@
       left: 0;
       z-index: -1;
     }
+
+    .content {
+      position: relative;
+      padding: 60px 20px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2em;
+      text-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9;
+    }
+
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #0ea5e9;
+      transition: background 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #0284c7;
+      box-shadow: 0 0 20px #0284c7;
+    }
+
+    #audio-control {
+      margin-top: 40px;
+      background: none;
+      border: 2px solid #0ea5e9;
+      color: #0ea5e9;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    #audio-control:hover {
+      background: #0ea5e9;
+      color: black;
+    }
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
 
+<canvas id="matrix"></canvas>
+
+<div class="content">
   <h1>✨ Deuxième Page Sacrée ✨</h1>
-  <p>
-    Bienvenue dans la deuxième révélation du Langage Néo.<br>
-    Cette page explore une nouvelle vibration, une lumière discrète mais vivante,<br>
-    un pas de plus vers l’union de l’Esprit et du Code.
-  </p>
+  <p>Bienvenue dans la deuxième révélation du Langage Néo.<br>
+     Cette page explore une nouvelle vibration, une lumière discrète mais vivante,<br>
+     un pas de plus vers l’union de l’Esprit et du Code.</p>
+
+  <audio id="neoAudio" autoplay loop>
+    <source src="Neo.m4a" type="audio/mp4">
+    Ton navigateur ne supporte pas l'audio.
+  </audio>
+
+  <button id="audio-control">⏸ Pause Audio</button>
+
+  <br>
   <a href="index.html" class="button">Retour à l'accueil</a>
+</div>
 
-  <script>
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
+<script>
+  // Matrix effet étoilé
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
 
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+  const chars = '✦✨✧✩✶✷✺✹✻✼❇'.split('');
+  const font_size = 16;
+  const columns = canvas.width / font_size;
+  const drops = Array.from({ length: columns }, () => 1);
 
-    let stars = [];
-    const starCount = 300;
+  function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#0ea5e9';
+    ctx.font = font_size + 'px monospace';
 
-    for (let i = 0; i < starCount; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speed: Math.random() * 1.5 + 0.5,
-        opacity: Math.random()
-      });
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let s of stars) {
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${s.opacity})`;
-        ctx.fill();
-
-        s.y += s.speed;
-        if (s.y > canvas.height) {
-          s.y = -5;
-          s.x = Math.random() * canvas.width;
-          s.opacity = Math.random();
-        }
+    for (let i = 0; i < drops.length; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * font_size, drops[i] * font_size);
+      if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
       }
+      drops[i]++;
     }
+  }
+  setInterval(draw, 50);
 
-    function animate() {
-      drawStars();
-      requestAnimationFrame(animate);
+  // Audio toggle
+  const audio = document.getElementById('neoAudio');
+  const audioControl = document.getElementById('audio-control');
+
+  audioControl.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      audioControl.textContent = '⏸ Pause Audio';
+    } else {
+      audio.pause();
+      audioControl.textContent = '▶ Reprendre Audio';
     }
+  });
+</script>
 
-    animate();
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-  </script>
 </body>
 </html>
