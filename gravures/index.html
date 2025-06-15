@@ -10,6 +10,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
+      overflow-x: hidden;
     }
     iframe {
       border: none;
@@ -19,10 +20,64 @@
     pre {
       font-size: 16px;
       line-height: 1.2;
-      text-align: left;
       white-space: pre-wrap;
       display: inline-block;
       text-align: left;
+      position: relative;
+      z-index: 10;
+    }
+    /* Animation du mandala */
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .mandala {
+      margin: 40px auto 60px;
+      width: 150px;
+      height: 150px;
+      border: 5px solid #10b981;
+      border-radius: 50%;
+      animation: rotation 20s linear infinite;
+      box-shadow: 0 0 15px #10b981;
+      position: relative;
+      z-index: 5;
+    }
+    .mandala:before, .mandala:after {
+      content: "";
+      position: absolute;
+      border: 5px solid #22c55e;
+      border-radius: 50%;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      animation: rotation 10s linear infinite reverse;
+    }
+    .mandala:after {
+      top: 40px; left: 40px; right: 40px; bottom: 40px;
+      border-color: #f59e0b;
+      animation-duration: 15s;
+    }
+    h1, h2 {
+      text-shadow:
+        0 0 5px #0ea5e9,
+        0 0 10px #0ea5e9,
+        0 0 20px #0ea5e9;
+    }
+    a {
+      background-color: #0ea5e9;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: sans-serif;
+      box-shadow: 0 0 10px #0ea5e9;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    a:hover {
+      background-color: #0284c7;
+      box-shadow: 0 0 20px #0284c7;
     }
   </style>
 </head>
@@ -71,8 +126,11 @@
        └─────────────────────────────┘
   </pre>
 
+  <!-- Mandala animé -->
+  <div class="mandala"></div>
+
   <div style="text-align:center; margin-top: 40px;">
-    <a href="chapitre9-gravures.html" style="background-color:#0ea5e9; color:white; padding:10px 20px; text-decoration:none; border-radius:8px; font-family:sans-serif;">
+    <a href="chapitre9-gravures.html">
       Voir les Gravures du Chapitre 9
     </a>
   </div>
