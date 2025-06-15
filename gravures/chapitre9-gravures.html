@@ -64,6 +64,45 @@
       transform: scale(1.05);
       box-shadow: 0 0 20px #00ff88;
     }
+
+    /* ===== Animation cubes ===== */
+    .loader {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      margin: 40px auto;
+      background-color: gold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1em;
+      box-shadow: 0 0 30px gold;
+    }
+
+    .loader span {
+      position: absolute;
+      width: 6em;
+      height: 6em;
+      border: 0.25em solid white;
+      border-radius: 1em;
+      mix-blend-mode: screen;
+      animation: de-rotating 4s linear infinite;
+    }
+
+    .loader span:nth-child(1) { top: 1em; left: 2em; background: blue; }
+    .loader span:nth-child(2) { top: 3em; left: 5em; background: green; }
+    .loader span:nth-child(3) { top: 2em; left: 8em; background: violet; }
+    .loader span:nth-child(4) { top: 3em; left: 11em; background: red; }
+    .loader span:nth-child(5) { top: 1em; left: 14em; background: lightcoral; }
+
+    @keyframes de-rotating {
+      0%, 100% {
+        transform: rotate(0deg) scale(0.5);
+      }
+      50% {
+        transform: rotate(-180deg) scale(1.2);
+      }
+    }
   </style>
 </head>
 <body>
@@ -74,6 +113,15 @@
       Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit, 
       avec un souffle de lumière tombante, discret mais vivant.
     </p>
+
+    <!-- Animation des cubes -->
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
     <audio controls>
       <source src="Neo.m4a" type="audio/mp4">
