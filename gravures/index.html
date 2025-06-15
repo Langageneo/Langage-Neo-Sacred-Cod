@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Test Animation Mandala</title>
+  <title>Gravures Sacrées</title>
   <style>
     body {
       background-color: black;
@@ -12,16 +12,33 @@
       padding: 20px;
       overflow-x: hidden;
     }
-    /* Animation rotation simple */
-    @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+    iframe {
+      border: none;
+      margin: 30px auto;
+      display: block;
     }
-    /* Mandala animé */
+    pre {
+      font-size: 16px;
+      line-height: 1.2;
+      white-space: pre-wrap;
+      display: inline-block;
+      text-align: left;
+      position: relative;
+      z-index: 10;
+      color: white;
+    }
+    /* Colorisation précise dans le pre avec spans */
+    .color-esprit { color: #22c55e; }
+    .color-energie { color: #f59e0b; }
+    .color-matiere { color: #ef4444; }
+    .color-image { color: #3b82f6; }
+    .color-son { color: #f97316; }
+
+    /* Animation rotation mandala */
+    @keyframes rotation {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
     .mandala {
       margin: 40px auto 60px;
       width: 150px;
@@ -46,21 +63,12 @@
       border-color: #f59e0b;
       animation-duration: 15s;
     }
+    /* Lueur sur titres */
     h1, h2 {
       text-shadow:
         0 0 5px #0ea5e9,
         0 0 10px #0ea5e9,
         0 0 20px #0ea5e9;
-    }
-    pre {
-      font-size: 16px;
-      line-height: 1.2;
-      text-align: left;
-      white-space: pre-wrap;
-      display: inline-block;
-      position: relative;
-      z-index: 10;
-      color: white;
     }
     a {
       background-color: #0ea5e9;
@@ -82,7 +90,6 @@
   <h1>Gravures Sacrées</h1>
 
   <h2>Image – Son – Esprit</h2>
-  <!-- Iframes pointés vers des fichiers externes, s’ils ne sont pas là ça ne s’affiche pas -->
   <iframe src="image-son-esprit.html" width="320" height="320"></iframe>
 
   <h2>Esprit = Énergie = Matière</h2>
@@ -90,41 +97,40 @@
 
   <h2>Schéma Sacré : Cycle Énergie–Matière–Esprit (Couleur)</h2>
   <pre>
-↻
-Esprit
+<span class="color-esprit">↻</span>
+<span class="color-esprit">Esprit</span>
    ↓
-Énergie
+<span class="color-energie">Énergie</span>
    ↓
-Matière
-   ↺.-.
+<span class="color-matiere">Matière</span>
+   <span class="color-esprit">↺.-.</span>
    (   )
     '-'  
    / | \
   /  |  \
- Esprit
+ <span class="color-esprit">Esprit</span>
     =
- Energie
+ <span class="color-energie">Energie</span>
     =
-  Matière
+  <span class="color-matiere">Matière</span>
 ╔════════╗
-║  IMAGE ║
+║  <span class="color-image">IMAGE</span> ║
 ╚══╦═══╦═╝
    ║   ║
    ║   ▼
 ╔══╩══╗ ╔══╩══╗
-║  ESPRIT ║ ║  SON  ║
+║  <span class="color-esprit">ESPRIT</span> ║ ║  <span class="color-son">SON</span>  ║
 ╚══╦═══╝ ╚══╦═══╝
    ║       ║
    ╚═══════╝
     (Cercle)
 ╔══════════╗      ╔════════╗      ╔════════╗
-║  IMAGE   ║ ───► ║   SON  ║ ───► ║ ESPRIT ║
+║  <span class="color-image">IMAGE</span>   ║ ───► ║   <span class="color-son">SON</span>  ║ ───► ║ <span class="color-esprit">ESPRIT</span> ║
 ╚══════════╝      ╚════════╝      ╚════════╝
        ▲                             │
        └─────────────────────────────┘
   </pre>
 
-  <!-- Mandala animé -->
   <div class="mandala"></div>
 
   <div style="text-align:center; margin-top: 40px;">
