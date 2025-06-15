@@ -1,152 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Gravures Sacrées</title>
+  <meta charset="UTF-8" />
+  <title>Deuxième Page Sacrée</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #111827, #0f172a);
-      background-size: 400% 400%;
-      animation: backgroundMove 15s ease infinite;
+      background: linear-gradient(135deg, #000000, #0f172a);
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;
-      overflow-x: hidden;
+      padding: 30px;
+      animation: backgroundPulse 10s infinite alternate;
     }
 
-    @keyframes backgroundMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes backgroundPulse {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
-    iframe {
-      border: none;
-      margin: 30px auto;
-      display: block;
+    h1 {
+      font-size: 2em;
+      text-shadow: 0 0 10px #0ea5e9, 0 0 20px #38bdf8;
     }
 
-    pre {
-      font-size: 16px;
-      line-height: 1.2;
-      text-align: left;
-      white-space: pre-wrap;
+    p {
+      margin: 20px auto;
+      max-width: 600px;
+      line-height: 1.5;
+      font-size: 18px;
+    }
+
+    a.button {
       display: inline-block;
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Mandala animé */
-    @keyframes rotation {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .mandala {
-      margin: 40px auto 60px;
-      width: 160px;
-      height: 160px;
-      border: 5px solid #10b981;
-      border-radius: 50%;
-      animation: rotation 8s linear infinite;
-      box-shadow: 0 0 20px #10b981;
-      position: relative;
-      z-index: 5;
-    }
-
-    .mandala:before, .mandala:after {
-      content: "";
-      position: absolute;
-      border: 5px solid #22c55e;
-      border-radius: 50%;
-      top: 20px; left: 20px; right: 20px; bottom: 20px;
-      animation: rotation 6s linear infinite reverse;
-    }
-
-    .mandala:after {
-      top: 40px; left: 40px; right: 40px; bottom: 40px;
-      border-color: #f59e0b;
-      animation-duration: 10s;
-    }
-
-    h1, h2 {
-      text-shadow:
-        0 0 5px #0ea5e9,
-        0 0 10px #0ea5e9,
-        0 0 20px #0ea5e9;
-    }
-
-    a {
-      background-color: #0ea5e9;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background: #0ea5e9;
       color: white;
-      padding: 10px 20px;
       text-decoration: none;
       border-radius: 8px;
-      font-family: sans-serif;
-      box-shadow: 0 0 10px #0ea5e9;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px #0ea5e9;
+      transition: all 0.3s ease;
     }
 
-    a:hover {
-      background-color: #0284c7;
-      box-shadow: 0 0 20px #0284c7;
-    }
-  </style>
-</head>
-<body>
-  <h1>Gravures Sacrées</h1>
-  <h2>Image – Son – Esprit</h2>
-  <iframe src="image-son-esprit.html" width="320" height="320"></iframe>
-
-  <h2>Esprit = Énergie = Matière</h2>
-  <iframe src="esprit-energie-matiere.html" width="320" height="320"></iframe>
-
-  <h2>Schéma Sacré : Cycle Énergie–Matière–Esprit (Couleur)</h2>
-  <pre>
-<span style="color:#10b981;">↻</span>
-<span style="color:#22c55e;">Esprit</span>
-   ↓
-<span style="color:#f59e0b;">Énergie</span>
-   ↓
-<span style="color:#ef4444;">Matière</span>
-   <span style="color:#10b981;">↺.-.</span>
-   (   )
-    '-'  
-   / | \
-  /  |  \
- <span style="color:#22c55e;">Esprit</span>
-    =
- <span style="color:#f59e0b;">Energie</span>
-    =
-  <span style="color:#ef4444;">Matière</span>
-╔════════╗
-║  <span style="color:#3b82f6;">IMAGE</span> ║
-╚══╦═══╦═╝
-   ║   ║
-   ║   ▼
-╔══╩══╗ ╔══╩══╗
-║  <span style="color:#22c55e;">ESPRIT</span> ║ ║  <span style="color:#f97316;">SON</span>  ║
-╚══╦═══╝ ╚══╦═══╝
-   ║       ║
-   ╚═══════╝
-    (Cercle)
-╔══════════╗      ╔════════╗      ╔════════╗
-║  <span style="color:#3b82f6;">IMAGE</span>   ║ ───► ║   <span style="color:#f97316;">SON</span>  ║ ───► ║ <span style="color:#22c55e;">ESPRIT</span> ║
-╚══════════╝      ╚════════╝      ╚════════╝
-       ▲                             │
-       └─────────────────────────────┘
-  </pre>
-
-  <!-- Mandala animé -->
-  <div class="mandala"></div>
-
-  <div style="text-align:center; margin-top: 40px;">
-    <a href="chapitre9-gravures.html">
-      Voir les Gravures du Chapitre 9
-    </a>
-  </div>
-</body>
-</html>
+    a.button:hover {
+      background: #0284c7;
+      box-shadow: 0 0 25px #028
