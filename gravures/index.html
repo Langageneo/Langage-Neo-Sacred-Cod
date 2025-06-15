@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Gravures Sacrées</title>
   <style>
     body {
-      background-color: black;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #111827, #0f172a);
+      background-size: 400% 400%;
+      animation: backgroundMove 15s ease infinite;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
       overflow-x: hidden;
-      position: relative;
-      z-index: 0;
     }
 
-    /* Animation légère et uniforme en arrière-plan */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle at center, rgba(14,165,233,0.1), transparent 70%);
-      animation: pulseLight 6s ease-in-out infinite;
-      pointer-events: none;
-      z-index: -1;
-    }
-    @keyframes pulseLight {
-      0%, 100% {
-        opacity: 0.3;
-      }
-      50% {
-        opacity: 0.6;
-      }
+    @keyframes backgroundMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     iframe {
@@ -39,6 +28,7 @@
       margin: 30px auto;
       display: block;
     }
+
     pre {
       font-size: 16px;
       line-height: 1.2;
@@ -49,50 +39,44 @@
       z-index: 10;
     }
 
-    /* Mandala avec rotation plus rapide et visible */
+    /* Mandala animé */
     @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
+
     .mandala {
       margin: 40px auto 60px;
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border: 5px solid #10b981;
       border-radius: 50%;
-      animation: rotation 10s linear infinite; /* plus rapide */
-      box-shadow: 0 0 25px #10b981; /* plus lumineux */
+      animation: rotation 8s linear infinite;
+      box-shadow: 0 0 20px #10b981;
       position: relative;
       z-index: 5;
     }
+
     .mandala:before, .mandala:after {
       content: "";
       position: absolute;
       border: 5px solid #22c55e;
       border-radius: 50%;
       top: 20px; left: 20px; right: 20px; bottom: 20px;
-      animation: rotation 7s linear infinite reverse; /* plus rapide */
-      box-shadow: 0 0 15px #22c55e;
+      animation: rotation 6s linear infinite reverse;
     }
+
     .mandala:after {
       top: 40px; left: 40px; right: 40px; bottom: 40px;
       border-color: #f59e0b;
-      animation-duration: 9s; /* plus rapide */
-      box-shadow: 0 0 15px #f59e0b;
+      animation-duration: 10s;
     }
 
-    /* Effet léger de lueur sur les titres */
     h1, h2 {
       text-shadow:
         0 0 5px #0ea5e9,
         0 0 10px #0ea5e9,
         0 0 20px #0ea5e9;
-      position: relative;
-      z-index: 10;
     }
 
     a {
@@ -104,9 +88,8 @@
       font-family: sans-serif;
       box-shadow: 0 0 10px #0ea5e9;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      z-index: 10;
     }
+
     a:hover {
       background-color: #0284c7;
       box-shadow: 0 0 20px #0284c7;
@@ -115,7 +98,6 @@
 </head>
 <body>
   <h1>Gravures Sacrées</h1>
-
   <h2>Image – Son – Esprit</h2>
   <iframe src="image-son-esprit.html" width="320" height="320"></iframe>
 
@@ -158,6 +140,7 @@
        └─────────────────────────────┘
   </pre>
 
+  <!-- Mandala animé -->
   <div class="mandala"></div>
 
   <div style="text-align:center; margin-top: 40px;">
