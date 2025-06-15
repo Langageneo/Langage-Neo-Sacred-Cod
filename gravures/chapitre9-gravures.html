@@ -1,72 +1,152 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Gravures du Chapitre 9</title>
+  <meta charset="UTF-8">
+  <title>Gravures Sacrées</title>
   <style>
     body {
-      background-color: black;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #111827, #0f172a);
+      background-size: 400% 400%;
+      animation: backgroundMove 15s ease infinite;
       color: white;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
-      margin: 2rem;
+      padding: 20px;
+      overflow-x: hidden;
     }
-    a {
-      color: #00ff00;
-      text-decoration: none;
-      font-weight: bold;
+
+    @keyframes backgroundMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    iframe {
+      border: none;
+      margin: 30px auto;
       display: block;
-      margin-top: 2rem;
+    }
+
+    pre {
+      font-size: 16px;
+      line-height: 1.2;
+      text-align: left;
+      white-space: pre-wrap;
+      display: inline-block;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Mandala animé */
+    @keyframes rotation {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .mandala {
+      margin: 40px auto 60px;
+      width: 160px;
+      height: 160px;
+      border: 5px solid #10b981;
+      border-radius: 50%;
+      animation: rotation 8s linear infinite;
+      box-shadow: 0 0 20px #10b981;
+      position: relative;
+      z-index: 5;
+    }
+
+    .mandala:before, .mandala:after {
+      content: "";
+      position: absolute;
+      border: 5px solid #22c55e;
+      border-radius: 50%;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      animation: rotation 6s linear infinite reverse;
+    }
+
+    .mandala:after {
+      top: 40px; left: 40px; right: 40px; bottom: 40px;
+      border-color: #f59e0b;
+      animation-duration: 10s;
+    }
+
+    h1, h2 {
+      text-shadow:
+        0 0 5px #0ea5e9,
+        0 0 10px #0ea5e9,
+        0 0 20px #0ea5e9;
+    }
+
+    a {
+      background-color: #0ea5e9;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: sans-serif;
+      box-shadow: 0 0 10px #0ea5e9;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #0284c7;
+      box-shadow: 0 0 20px #0284c7;
     }
   </style>
 </head>
 <body>
+  <h1>Gravures Sacrées</h1>
+  <h2>Image – Son – Esprit</h2>
+  <iframe src="image-son-esprit.html" width="320" height="320"></iframe>
 
-  <h1>Gravures du Chapitre 9</h1>
+  <h2>Esprit = Énergie = Matière</h2>
+  <iframe src="esprit-energie-matiere.html" width="320" height="320"></iframe>
 
-  <!-- Première gravure : Image - Son - Esprit -->
-  <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="display:block; margin: 0 auto;">
-    <circle cx="150" cy="50" r="40" fill="#3b82f6" />
-    <circle cx="240" cy="180" r="40" fill="#f97316" />
-    <circle cx="60"  cy="180" r="40" fill="#22c55e" />
+  <h2>Schéma Sacré : Cycle Énergie–Matière–Esprit (Couleur)</h2>
+  <pre>
+<span style="color:#10b981;">↻</span>
+<span style="color:#22c55e;">Esprit</span>
+   ↓
+<span style="color:#f59e0b;">Énergie</span>
+   ↓
+<span style="color:#ef4444;">Matière</span>
+   <span style="color:#10b981;">↺.-.</span>
+   (   )
+    '-'  
+   / | \
+  /  |  \
+ <span style="color:#22c55e;">Esprit</span>
+    =
+ <span style="color:#f59e0b;">Energie</span>
+    =
+  <span style="color:#ef4444;">Matière</span>
+╔════════╗
+║  <span style="color:#3b82f6;">IMAGE</span> ║
+╚══╦═══╦═╝
+   ║   ║
+   ║   ▼
+╔══╩══╗ ╔══╩══╗
+║  <span style="color:#22c55e;">ESPRIT</span> ║ ║  <span style="color:#f97316;">SON</span>  ║
+╚══╦═══╝ ╚══╦═══╝
+   ║       ║
+   ╚═══════╝
+    (Cercle)
+╔══════════╗      ╔════════╗      ╔════════╗
+║  <span style="color:#3b82f6;">IMAGE</span>   ║ ───► ║   <span style="color:#f97316;">SON</span>  ║ ───► ║ <span style="color:#22c55e;">ESPRIT</span> ║
+╚══════════╝      ╚════════╝      ╚════════╝
+       ▲                             │
+       └─────────────────────────────┘
+  </pre>
 
-    <text x="150" y="55" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Image</text>
-    <text x="240" y="185" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Son</text>
-    <text x="60"  y="185" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Esprit</text>
+  <!-- Mandala animé -->
+  <div class="mandala"></div>
 
-    <defs>
-      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" fill="#ffffff">
-        <polygon points="0 0, 10 3.5, 0 7" />
-      </marker>
-    </defs>
-
-    <line x1="175" y1="60" x2="215" y2="160" stroke="white" stroke-width="3" marker-end="url(#arrowhead)" />
-    <line x1="225" y1="160" x2="85" y2="160" stroke="white" stroke-width="3" marker-end="url(#arrowhead)" />
-    <line x1="95" y1="160" x2="125" y2="60" stroke="white" stroke-width="3" marker-end="url(#arrowhead)" />
-  </svg>
-
-  <!-- Deuxième gravure : Esprit - Énergie - Matière -->
-  <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="display:block; margin: 3rem auto 0;">
-    <circle cx="150" cy="50" r="40" fill="#10b981" />
-    <circle cx="240" cy="180" r="40" fill="#f59e0b" />
-    <circle cx="60"  cy="180" r="40" fill="#ef4444" />
-
-    <text x="150" y="55" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Esprit</text>
-    <text x="240" y="185" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Énergie</text>
-    <text x="60"  y="185" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Matière</text>
-
-    <defs>
-      <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" fill="#ffffff">
-        <polygon points="0 0, 10 3.5, 0 7" />
-      </marker>
-    </defs>
-
-    <line x1="175" y1="60" x2="215" y2="160" stroke="white" stroke-width="3" marker-end="url(#arrowhead2)" />
-    <line x1="225" y1="160" x2="85" y2="160" stroke="white" stroke-width="3" marker-end="url(#arrowhead2)" />
-    <line x1="95" y1="160" x2="125" y2="60" stroke="white" stroke-width="3" marker-end="url(#arrowhead2)" />
-  </svg>
-
-  <a href="index.html">← Retour à la page Gravures</a>
-
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="chapitre9-gravures.html">
+      Voir les Gravures du Chapitre 9
+    </a>
+  </div>
 </body>
 </html>
