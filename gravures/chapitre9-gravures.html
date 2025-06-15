@@ -1,69 +1,86 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Chapitre 9 — Gravures Sacrées</title>
+  <meta charset="UTF-8" />
+  <title>✨ Chapitre 9 — Gravures Sacrées ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
       background: black;
-      overflow: hidden;
       color: white;
       font-family: Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
       text-align: center;
-    }h1 {
-  margin-top: 50px;
-  font-size: 2em;
-  text-shadow: 0 0 10px #00f7ff;
-}
+      padding: 30px 10px 10px;
+      font-size: 2em;
+    }
 
-p {
-  max-width: 600px;
-  margin: 20px auto;
-  font-size: 18px;
-  line-height: 1.5;
-}
+    p {
+      text-align: center;
+      max-width: 700px;
+      margin: 10px auto 40px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
 
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: fall linear infinite;
-}
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+      z-index: 0;
+    }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
-<body><h1>✨ Chapitre 9 — Gravures Sacrées ✨</h1>
-<p>Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit, avec un souffle de lumière tombante, discret mais vivant.</p><script>
-  function createStar() {
-    const star = document.createElement('div');
-    star.classList.add('star');
-    star.style.left = Math.random() * window.innerWidth + 'px';
-    star.style.animationDuration = (2 + Math.random() * 3) + 's';
-    document.body.appendChild(star);
+<body>
 
-    setTimeout(() => {
-      star.remove();
-    }, 5000);
-  }
+  <h1>✨ Chapitre 9 — Gravures Sacrées ✨</h1>
+  <p>
+    Bienvenue dans le sanctuaire des symboles. Cette page explore les liens entre énergie, matière et esprit, 
+    avec un souffle de lumière tombante, discret mais vivant.
+  </p>
 
-  setInterval(createStar, 100);
-</script><audio autoplay loop>
-  <source src="Neo.m4a" type="audio/mp4">
-  Ton navigateur ne supporte pas l'audio.
-</audio></body>
+  <!-- TON CONTENU EXISTANT PEUT VENIR ICI -->
+  <!-- Les schémas sacrés, images, textes, etc. -->
+
+  <!-- ÉTOILES QUI TOMBENT -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.top = `${Math.random() * -100}vh`;
+      star.style.animationDuration = `${2 + Math.random() * 3}s`;
+      star.style.opacity = Math.random();
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <!-- AUDIO -->
+  <audio autoplay loop>
+    <source src="Neo.m4a" type="audio/mp4">
+    Ton navigateur ne supporte pas l’audio.
+  </audio>
+
+</body>
 </html>
