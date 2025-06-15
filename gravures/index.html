@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Gravures Sacrées</title>
+  <meta charset="UTF-8" />
+  <title>Test Animation Mandala</title>
   <style>
     body {
       background-color: black;
@@ -12,21 +12,7 @@
       padding: 20px;
       overflow-x: hidden;
     }
-    iframe {
-      border: none;
-      margin: 30px auto;
-      display: block;
-    }
-    pre {
-      font-size: 16px;
-      line-height: 1.2;
-      white-space: pre-wrap;
-      display: inline-block;
-      text-align: left;
-      position: relative;
-      z-index: 10;
-    }
-    /* Animation du mandala */
+    /* Animation rotation simple */
     @keyframes rotation {
       from {
         transform: rotate(0deg);
@@ -35,6 +21,7 @@
         transform: rotate(360deg);
       }
     }
+    /* Mandala animé */
     .mandala {
       margin: 40px auto 60px;
       width: 150px;
@@ -65,6 +52,16 @@
         0 0 10px #0ea5e9,
         0 0 20px #0ea5e9;
     }
+    pre {
+      font-size: 16px;
+      line-height: 1.2;
+      text-align: left;
+      white-space: pre-wrap;
+      display: inline-block;
+      position: relative;
+      z-index: 10;
+      color: white;
+    }
     a {
       background-color: #0ea5e9;
       color: white;
@@ -85,6 +82,7 @@
   <h1>Gravures Sacrées</h1>
 
   <h2>Image – Son – Esprit</h2>
+  <!-- Iframes pointés vers des fichiers externes, s’ils ne sont pas là ça ne s’affiche pas -->
   <iframe src="image-son-esprit.html" width="320" height="320"></iframe>
 
   <h2>Esprit = Énergie = Matière</h2>
@@ -92,35 +90,35 @@
 
   <h2>Schéma Sacré : Cycle Énergie–Matière–Esprit (Couleur)</h2>
   <pre>
-<span style="color:#10b981;">↻</span>
-<span style="color:#22c55e;">Esprit</span>
+↻
+Esprit
    ↓
-<span style="color:#f59e0b;">Énergie</span>
+Énergie
    ↓
-<span style="color:#ef4444;">Matière</span>
-   <span style="color:#10b981;">↺.-.</span>
+Matière
+   ↺.-.
    (   )
     '-'  
    / | \
   /  |  \
- <span style="color:#22c55e;">Esprit</span>
+ Esprit
     =
- <span style="color:#f59e0b;">Energie</span>
+ Energie
     =
-  <span style="color:#ef4444;">Matière</span>
+  Matière
 ╔════════╗
-║  <span style="color:#3b82f6;">IMAGE</span> ║
+║  IMAGE ║
 ╚══╦═══╦═╝
    ║   ║
    ║   ▼
 ╔══╩══╗ ╔══╩══╗
-║  <span style="color:#22c55e;">ESPRIT</span> ║ ║  <span style="color:#f97316;">SON</span>  ║
+║  ESPRIT ║ ║  SON  ║
 ╚══╦═══╝ ╚══╦═══╝
    ║       ║
    ╚═══════╝
     (Cercle)
 ╔══════════╗      ╔════════╗      ╔════════╗
-║  <span style="color:#3b82f6;">IMAGE</span>   ║ ───► ║   <span style="color:#f97316;">SON</span>  ║ ───► ║ <span style="color:#22c55e;">ESPRIT</span> ║
+║  IMAGE   ║ ───► ║   SON  ║ ───► ║ ESPRIT ║
 ╚══════════╝      ╚════════╝      ╚════════╝
        ▲                             │
        └─────────────────────────────┘
@@ -130,9 +128,7 @@
   <div class="mandala"></div>
 
   <div style="text-align:center; margin-top: 40px;">
-    <a href="chapitre9-gravures.html">
-      Voir les Gravures du Chapitre 9
-    </a>
+    <a href="chapitre9-gravures.html">Voir les Gravures du Chapitre 9</a>
   </div>
 </body>
 </html>
