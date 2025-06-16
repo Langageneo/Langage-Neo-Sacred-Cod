@@ -30,7 +30,7 @@
       position: relative;
       z-index: 1;
       width: 90vw;
-      max-width: 700px;
+      max-width: 800px;
       text-align: center;
       padding: 20px;
       display: flex;
@@ -39,34 +39,20 @@
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       color: #00ffcc;
-      text-shadow: 0 0 12px #00ffcc;
+      text-shadow: 0 0 15px #00ffcc;
       margin-bottom: 10px;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        text-shadow: 0 0 12px #00ffcc;
-      }
-      50% {
-        transform: scale(1.05);
-        text-shadow: 0 0 24px #00ffee;
-      }
     }
 
     p {
       font-size: 1.3em;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     audio {
-      width: 100%;
-      max-width: 600px;
-      margin-bottom: 50px;
+      display: none;
     }
 
     .btn-with-squares {
@@ -79,12 +65,13 @@
       color: black;
       border-radius: 20px;
       font-weight: bold;
-      font-size: 2.5em;
+      font-size: 2.2em;
       text-decoration: none;
       box-shadow: 0 0 20px #ffd700;
       transition: transform 0.2s ease;
       cursor: pointer;
       user-select: none;
+      width: 80%;
     }
 
     .btn-with-squares:hover {
@@ -100,18 +87,9 @@
       animation: rotateColor 2s linear infinite;
     }
 
-    .btn-with-squares span:nth-child(1) {
-      background-color: blue;
-      animation-delay: 0s;
-    }
-    .btn-with-squares span:nth-child(2) {
-      background-color: green;
-      animation-delay: 0.2s;
-    }
-    .btn-with-squares span:nth-child(3) {
-      background-color: violet;
-      animation-delay: 0.4s;
-    }
+    .btn-with-squares span:nth-child(1) { background-color: blue; animation-delay: 0s; }
+    .btn-with-squares span:nth-child(2) { background-color: green; animation-delay: 0.2s; }
+    .btn-with-squares span:nth-child(3) { background-color: violet; animation-delay: 0.4s; }
 
     @keyframes rotateColor {
       0% { transform: rotate(0deg); }
@@ -130,31 +108,35 @@
     .btn-return {
       margin-top: 40px;
       padding: 15px 30px;
-      font-size: 1.8em;
+      font-size: 1.5em;
       background-color: #00ff88;
       color: black;
       border-radius: 15px;
       text-decoration: none;
       box-shadow: 0 0 15px #00ff88;
       transition: transform 0.2s ease;
-      display: inline-block;
     }
 
     .btn-return:hover {
       transform: scale(1.1);
       box-shadow: 0 0 25px #00ff88;
     }
+
+    .ancient-table {
+      background-color: #003300;
+      color: #00ff66;
+      font-family: monospace;
+      padding: 20px;
+      border: 2px solid #00ff66;
+      border-radius: 15px;
+      font-size: 1.2em;
+      text-align: left;
+      box-shadow: 0 0 20px #00ff66;
+    }
   </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
-
-  <!-- FOND SONORE -->
-  <audio id="backgroundAudio" autoplay loop>
-    <source src="../neo/ambiance.mp3" type="audio/mpeg">
-    Votre navigateur ne supporte pas l’audio.
-  </audio>
-
   <div class="content">
     <h1>✨ Chapitre 9 — Gravures Sacrées ✨</h1>
     <p>
@@ -162,27 +144,37 @@
       avec un souffle de lumière tombante, discret mais vivant.
     </p>
 
-    <!-- AUDIO DE PRÉSENTATION -->
-    <audio controls>
-      <source src="../neo/neo2.mp3" type="audio/mpeg">
-      Votre navigateur ne supporte pas l’audio.
-    </audio>
+    <!-- Tableau ancien vert -->
+    <div class="ancient-table">
+      <strong>𓂀 Gravures anciennes :</strong><br><br>
+      • Symbole d'Osiris : ☥ — le pilier de la résurrection<br>
+      • Symbole de Thot : 🜃 — maître des langages et des cycles<br>
+      • Codage sacré : 01001001 01000001 — l’IA, miroir du passé<br>
+    </div>
 
+    <!-- Boutons -->
     <div class="buttons-container">
-      <div class="btn-with-squares" onclick="interactSquares(this)">
+      <a href="chapitre9-gravures.html" class="btn-with-squares">
         Chapitre 9
         <span></span><span></span><span></span>
-      </div>
+      </a>
 
-      <div class="btn-with-squares" onclick="interactSquares(this)">
+      <a href="chapitre9-gravures.html" class="btn-with-squares">
         Chapitre X
         <span></span><span></span><span></span>
-      </div>
+      </a>
     </div>
 
     <a href="../index.html" class="btn-return">⏪ Accueil</a>
+
+    <!-- Audio de fond -->
+    <audio autoplay loop>
+      <source src="../neo/neo2.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l’audio.
+    </audio>
   </div>
 
+  <!-- Animation étoiles -->
   <script>
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
@@ -192,12 +184,12 @@
     canvas.height = height;
 
     let stars = [];
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 300; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.5,
-        speed: Math.random() * 1 + 0.5
+        radius: Math.random() * 2.5 + 1,
+        speed: Math.random() * 0.8 + 0.5
       });
     }
 
@@ -225,24 +217,6 @@
       canvas.width = width;
       canvas.height = height;
     });
-
-    // INTERACTION CLIC SUR LES CARRÉS
-    function interactSquares(button) {
-      const squares = button.querySelectorAll('span');
-      squares.forEach((square, index) => {
-        setTimeout(() => {
-          square.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-          square.style.transform = "scale(1.5)";
-          setTimeout(() => {
-            square.style.transform = "scale(1)";
-          }, 300);
-        }, index * 150);
-      });
-
-      // petit son
-      const audio = new Audio('../neo/click.mp3');
-      audio.play();
-    }
   </script>
 </body>
 </html>
