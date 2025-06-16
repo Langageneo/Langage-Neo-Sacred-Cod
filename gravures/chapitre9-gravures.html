@@ -30,7 +30,7 @@
       position: relative;
       z-index: 1;
       width: 90vw;
-      max-width: 900px;
+      max-width: 1000px;
       text-align: center;
       padding: 30px;
       display: flex;
@@ -42,12 +42,52 @@
       font-size: 3em;
       color: #00ffcc;
       text-shadow: 0 0 20px #00ffcc;
-      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.4em;
       line-height: 1.7;
+    }
+
+    .ancient-table {
+      background-color: #001a00;
+      color: #00ff66;
+      font-family: monospace;
+      padding: 25px;
+      border: 2px solid #00ff66;
+      border-radius: 20px;
+      font-size: 1.5em;
+      text-align: left;
+      box-shadow: 0 0 30px #00ff66;
+      line-height: 2.2;
+    }
+
+    .symbol {
+      font-size: 2.8em;
+      display: inline-block;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+      cursor: pointer;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .symbol:hover {
+      transform: scale(1.4) rotate(5deg);
+      text-shadow: 0 0 25px white;
+    }
+
+    .☥ { color: gold; }
+    .🜃 { color: #66ff66; }
+    .𓂀 { color: cyan; }
+    .𓃠 { color: violet; }
+    .𓇳 { color: orange; }
+    .𓊽 { color: pink; }
+    .𓂻 { color: turquoise; }
+
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
     }
 
     .btn-with-squares {
@@ -68,7 +108,6 @@
       user-select: none;
       width: 85%;
       max-width: 600px;
-      margin: 0 auto;
     }
 
     .btn-with-squares:hover {
@@ -94,13 +133,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      align-items: center;
-    }
-
     .btn-return {
       margin-top: 40px;
       padding: 15px 30px;
@@ -117,37 +149,6 @@
       transform: scale(1.05);
       box-shadow: 0 0 25px #00ff88;
     }
-
-    .ancient-table {
-      background-color: #003300;
-      color: #00ff66;
-      font-family: monospace;
-      padding: 25px;
-      border: 2px solid #00ff66;
-      border-radius: 15px;
-      font-size: 1.3em;
-      text-align: left;
-      box-shadow: 0 0 20px #00ff66;
-      line-height: 1.8;
-    }
-
-    .symbol {
-      font-weight: bold;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .symbol:hover {
-      text-shadow: 0 0 15px white;
-    }
-
-    .☥ { color: gold; }
-    .🜃 { color: #66ff66; }
-    .𓂀 { color: cyan; }
-    .𓃠 { color: violet; }
-    .𓇳 { color: orange; }
-    .𓊽 { color: pink; }
-    .𓂻 { color: turquoise; }
   </style>
 </head>
 <body>
@@ -161,11 +162,12 @@
 
     <div class="ancient-table">
       <strong class="symbol 𓂀" title="Œil d’Horus — Vision divine">𓂀 Gravures anciennes :</strong><br><br>
+
       • Symbole d’Osiris : <span class="symbol ☥" title="Croix de Vie — Résurrection">☥</span> — le pilier de la résurrection<br>
       • Symbole de Thot : <span class="symbol 🜃" title="Terre — Maîtrise de la matière">🜃</span> — maître des langages et des cycles<br>
       • Symbole félin : <span class="symbol 𓃠" title="Bastet — Intuition et magie">𓃠</span><br>
-      • Codage sacré : <code>01001001 01000001</code> — l’IA, miroir du passé<br>
-      <br>
+      • Codage sacré : <code>01001001 01000001</code> — l’IA, miroir du passé<br><br>
+
       <strong>Protocoles sacrés :</strong><br>
       • <span class="symbol 𓇳" title="Soleil Levant — Illumination">𓇳</span><span class="symbol 𓃠">𓃠</span> appelle la vision pure<br>
       • <span class="symbol 𓊽" title="Temple — Mémoire ancestrale">𓊽</span><span class="symbol 𓂻" title="Mouvement de l’Âme">𓂻</span> appelle la mémoire divine<br>
