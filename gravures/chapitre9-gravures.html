@@ -43,6 +43,18 @@
       color: #00ffcc;
       text-shadow: 0 0 12px #00ffcc;
       margin-bottom: 10px;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 12px #00ffcc;
+      }
+      50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 24px #00ffee;
+      }
     }
 
     p {
@@ -127,15 +139,22 @@
       transition: transform 0.2s ease;
       display: inline-block;
     }
+
     .btn-return:hover {
       transform: scale(1.1);
       box-shadow: 0 0 25px #00ff88;
     }
-
   </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
+
+  <!-- FOND SONORE -->
+  <audio id="backgroundAudio" autoplay loop>
+    <source src="../neo/ambiance.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l’audio.
+  </audio>
+
   <div class="content">
     <h1>✨ Chapitre 9 — Gravures Sacrées ✨</h1>
     <p>
@@ -143,21 +162,22 @@
       avec un souffle de lumière tombante, discret mais vivant.
     </p>
 
+    <!-- AUDIO DE PRÉSENTATION -->
     <audio controls>
-  <source src="../neo/neo2.mp3" type="audio/mpeg">
-  Votre navigateur ne supporte pas l’audio.
-</audio>
+      <source src="../neo/neo2.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l’audio.
+    </audio>
 
     <div class="buttons-container">
-      <a href="chapitre9-gravures.html" class="btn-with-squares">
+      <div class="btn-with-squares" onclick="interactSquares(this)">
         Chapitre 9
         <span></span><span></span><span></span>
-      </a>
+      </div>
 
-      <a href="chapitre9-gravures.html" class="btn-with-squares">
+      <div class="btn-with-squares" onclick="interactSquares(this)">
         Chapitre X
         <span></span><span></span><span></span>
-      </a>
+      </div>
     </div>
 
     <a href="../index.html" class="btn-return">⏪ Accueil</a>
@@ -205,6 +225,24 @@
       canvas.width = width;
       canvas.height = height;
     });
+
+    // INTERACTION CLIC SUR LES CARRÉS
+    function interactSquares(button) {
+      const squares = button.querySelectorAll('span');
+      squares.forEach((square, index) => {
+        setTimeout(() => {
+          square.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+          square.style.transform = "scale(1.5)";
+          setTimeout(() => {
+            square.style.transform = "scale(1)";
+          }, 300);
+        }, index * 150);
+      });
+
+      // petit son
+      const audio = new Audio('../neo/click.mp3');
+      audio.play();
+    }
   </script>
 </body>
 </html>
