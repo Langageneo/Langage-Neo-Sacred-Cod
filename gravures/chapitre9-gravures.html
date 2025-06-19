@@ -273,5 +273,49 @@
       canvas.height = height;
     });
   </script>
+    <style>
+  .faucon-sacré {
+    display: inline-block;
+    font-size: 4em;
+    text-decoration: none;
+    color: #1abc9c;
+    border: 3px solid #1abc9c;
+    border-radius: 15px;
+    padding: 0.3em 0.5em;
+    box-shadow: 0 0 20px #1abc9c90, 0 0 40px #1abc9c50;
+    background: #00000040;
+    animation: fauconVol 2.5s ease-in-out infinite;
+    transition: transform 0.4s ease;
+  }
+
+  .faucon-sacré:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #1abc9c, 0 0 60px #1abc9c60;
+  }
+
+  @keyframes fauconVol {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .texte-sacré {
+    color: #ccc;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    animation: haloTexte 3s ease-in-out infinite;
+  }
+
+  @keyframes haloTexte {
+    0%, 100% { color: #ccc; }
+    50% { color: #ffffff; }
+  }
+</style>
+
+<div style="text-align: center; margin-top: 3em;">
+  <a href="https://langageneo.github.io/Langage-Neo-Sacred-Cod/symboles.html" class="faucon-sacré">
+    𓅃
+  </a>
+  <p class="texte-sacré">Accéder aux Symboles Sacrés</p>
+</div>
 </body>
 </html>
