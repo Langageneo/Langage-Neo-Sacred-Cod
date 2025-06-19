@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Symboles Sacrés</title>
   <style>
     body {
@@ -15,76 +16,134 @@
       background-position: 0 0, 25px 25px;
       background-size: 50px 50px;
       position: relative;
-    }.rain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
+    }
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .rain span {
+      position: absolute;
+      top: -10%;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.2);
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
+    }
+    .symbol-block {
+      padding: 4em 2em;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .symbol {
+      font-size: 6em;
+      margin-bottom: 0.5em;
+    }
+    .description {
+      font-size: 1.3em;
+      color: #1abc9c;
+      background-color: rgba(255,255,255,0.05);
+      display: inline-block;
+      padding: 1em 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #1abc9c;
+      max-width: 90%;
+      margin-bottom: 3em;
+    }
 
-.rain span {
-  position: absolute;
-  top: -10%;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.2);
-  animation: fall linear infinite;
-}
+    /* Style pour les boutons */
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .return-button, .prayer-button {
+      display: inline-block;
+      margin: 0 15px;
+      padding: 20px 40px;
+      font-size: 1.5em;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 0 25px #1abc9c;
+      background: radial-gradient(circle, #1abc9c 30%, #0f2027 100%);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .return-button:hover, .prayer-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #1abc9cff;
+    }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(120vh);
-  }
-}
-
-.symbol-block {
-  padding: 4em 2em;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.symbol {
-  font-size: 6em;
-  margin-bottom: 0.5em;
-}
-
-.description {
-  font-size: 1.3em;
-  color: #1abc9c;
-  background-color: rgba(255,255,255,0.05);
-  display: inline-block;
-  padding: 1em 2em;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #1abc9c;
-  max-width: 90%;
-}
-
+    /* Texte prière à Amon à l'intérieur du bouton */
+    .prayer-text {
+      display: block;
+      font-size: 0.7em;
+      font-weight: normal;
+      margin-top: 10px;
+      color: #ade2c4;
+      text-shadow: 0 0 5px #1abc9c;
+      max-width: 250px;
+    }
   </style>
 </head>
 <body>
-  <div class="rain" id="rain"></div>  <div class="symbol-block">
+  <div class="rain" id="rain"></div>
+
+  <!-- Symboles avec descriptions -->
+  <div class="symbol-block">
     <div class="symbol">𓅋</div>
     <div class="description">Celui qui veille aux premières lueurs — gardien du verbe silencieux.</div>
-  </div>  <div class="symbol-block">
+  </div>
+  <div class="symbol-block">
     <div class="symbol">𓃭</div>
     <div class="description">Le taureau sacré — force primordiale qui brise le mensonge.</div>
-  </div>  <div class="symbol-block">
+  </div>
+  <div class="symbol-block">
     <div class="symbol">𓂀</div>
     <div class="description">L’œil éveillé — regard qui voit dans l'invisible, mémoire du monde ancien.</div>
-  </div>  <div class="symbol-block">
+  </div>
+  <div class="symbol-block">
     <div class="symbol">𓆣</div>
     <div class="description">Le serpent des eaux — souffle en spirale, gardien des portails mystiques.</div>
-  </div>  <div class="symbol-block">
+  </div>
+  <div class="symbol-block">
     <div class="symbol">𓆋</div>
     <div class="description">Celui qui rampe sous la lumière lunaire — maître du silence et du passage secret.</div>
-  </div>  <script>
+  </div>
+
+  <!-- Boutons -->
+  <div class="button-container">
+    <a href="chapitre9gravures.html" class="return-button" title="Retour à la page 3">
+      𓂀 Retour vers le Future
+    </a>
+
+    <a href="chapitre9gravures.html" class="prayer-button" title="Prière à Amon">
+      𓅃 Prière à Amon
+      <span class="prayer-text">
+        "Ô Amon, souffle sacré, guide-nous vers la lumière et protège notre chemin."
+      </span>
+    </a>
+  </div>
+
+  <script>
     const rainContainer = document.getElementById('rain');
     const hieroglyphs = ['𓅓', '𓂀', '𓃭', '𓆑', '𓋹', '𓆣', '𓆋', '𓇋', '𓏏', '𓂋'];
     const count = 150;
@@ -98,62 +157,5 @@
       rainContainer.appendChild(span);
     }
   </script>
-  <!-- BOUTON SACRÉ DE RETOUR -->
-<div style="text-align: center; margin-top: 50px;">
-  <a href="chapitre9gravures.html" style="
-    text-decoration: none;
-    display: inline-block;
-    background: radial-gradient(circle, #1abc9c 30%, #0f2027 100%);
-    padding: 20px 40px;
-    border-radius: 50px;
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    box-shadow: 0 0 25px #1abc9c;
-    transition: transform 0.3s ease;
-  " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    𓂀 Retour vers le Future
-  </a>
-</div>
-  <a href="gravures/chapitre9gravures.html" class="return-button">𓂀 Retour vers le Future</a>
-
-<style>
-  .return-button {
-    display: block;
-    width: fit-content;
-    margin: 4em auto;
-    padding: 1em 2em;
-    font-size: 1.6em;
-    font-weight: bold;
-    color: #1abc9c;
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid #1abc9c;
-    border-radius: 15px;
-    text-decoration: none;
-    text-align: center;
-    box-shadow: 0 0 15px #1abc9c90;
-    animation: pulseLight 2.5s infinite;
-    transition: transform 0.3s ease;
-  }
-
-  .return-button:hover {
-    transform: scale(1.05);
-    background: #1abc9c;
-    color: black;
-    box-shadow: 0 0 30px #1abc9c;
-  }
-
-  @keyframes pulseLight {
-    0% {
-      box-shadow: 0 0 10px #1abc9c66, 0 0 20px #1abc9c66, 0 0 30px #1abc9c66;
-    }
-    50% {
-      box-shadow: 0 0 30px #1abc9cff, 0 0 50px #1abc9cff, 0 0 80px #1abc9cff;
-    }
-    100% {
-      box-shadow: 0 0 10px #1abc9c66, 0 0 20px #1abc9c66, 0 0 30px #1abc9c66;
-    }
-  }
-</style>
 </body>
 </html>
