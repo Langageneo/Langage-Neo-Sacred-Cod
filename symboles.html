@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Symboles Mystiques — Ousmane CISSÉ</title>
+  <style>
+    /* Corps et base */
+    body {
+      margin: 0;
+      background: black;
+      color: #1abc9c;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    /* Conteneur symboles */
+    .symbols-container {
+      font-size: 8rem;
+      letter-spacing: 1.2rem;
+      text-shadow: 0 0 15px #1abc9c, 0 0 30px #16a085;
+      z-index: 10;
+    }
+
+    /* Canvas full screen */
+    canvas#background-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      display: block;
+      background: black;
+    }
+
+    /* Bouton retour (optionnel) */
+    .back-button {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: #1abc9c;
+      color: black;
+      border: none;
+      padding: 0.7em 1.2em;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 11;
+      transition: background 0.3s;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .back-button:hover {
+      background: #148f77;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="background-canvas"></canvas>
+
+  <a href="chapitre10.html" class="back-button">Retour au Chapitre 10</a>
+
+  <div class="symbols-container">
+    𓅋 𓃭 𓂀 𓆣 𓆋
+  </div>
+
+  <script>
+    // Canvas setup
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Étoiles tombantes
+    const starsCount = 80;
+    const stars = [];
+    for(let i = 0; i < starsCount; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 1.5 + 0.5,
+        speed: Math.random() * 1 + 0.5
+      });
+    }
+
+    // Effet Matrix
+    const letters = '0123456789ABCDEF';
+    const fontSize = 14;
+    const columns = Math.floor(width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+      ctx.fillRect(0, 0, width, height);
+
+      // Dessin étoiles
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.y += star.speed;
+        if (star.y > height) {
+          star.x = Math.random() * width;
+          star.y = 0;
+          star.size = Math.random() * 1.5 + 0.5;
+          star.speed = Math.random() * 1 + 0.5;
+        }
+      });
+
+      // Dessin Matrix
+      ctx.fillStyle = '#1abc9c';
+      ctx.font = fontSize + 'px monospace';
+      for(let i = 0; i < columns; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if(drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
+</body>
+</html>
