@@ -1,101 +1,101 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Symboles Sacrés — Langage Néo</title>
+  <title>Symboles Sacrés</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Courier New', monospace;
-      background: black;
-      color: white;
+      font-family: 'Georgia', serif;
+      background: #000;
+      color: #fff;
       overflow-x: hidden;
-    }
-
-    .matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .content {
+      background-image: radial-gradient(#111 1px, transparent 1px), radial-gradient(#111 1px, transparent 1px);
+      background-position: 0 0, 25px 25px;
+      background-size: 50px 50px;
       position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 20px;
-      text-align: center;
-    }
+    }.rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
 
-    .symbol {
-      font-size: 120px;
-      margin: 80px 0 20px;
-      text-shadow: 0 0 30px #00ffff;
-    }
+.rain span {
+  position: absolute;
+  top: -10%;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.2);
+  animation: fall linear infinite;
+}
 
-    .desc {
-      font-size: 18px;
-      color: #cccccc;
-      margin-bottom: 40px;
-      max-width: 600px;
-      text-shadow: 0 0 10px #008080;
-    }
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(120vh);
+  }
+}
+
+.symbol-block {
+  padding: 4em 2em;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.symbol {
+  font-size: 6em;
+  margin-bottom: 0.5em;
+}
+
+.description {
+  font-size: 1.3em;
+  color: #1abc9c;
+  background-color: rgba(255,255,255,0.05);
+  display: inline-block;
+  padding: 1em 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #1abc9c;
+  max-width: 90%;
+}
+
   </style>
 </head>
 <body>
-  <canvas class="matrix"></canvas>
-
-  <div class="content">
-    <div class="symbol">𓂀</div>
-    <div class="desc">L’Œil de Râ veille. 🛐 Invoque la clarté dans les ténèbres. Protège les âmes éveillées.</div>
-
-    <div class="symbol">𓃭</div>
-    <div class="desc">Le Taureau sacré. 🛐 Force tranquille. Racines éternelles dans la Terre des Ancêtres.</div>
-
+  <div class="rain" id="rain"></div>  <div class="symbol-block">
     <div class="symbol">𓅋</div>
-    <div class="desc">L’Oiseau du souffle. 🛐 Porteur du Verbe, messager du ciel, gardien des anciens secrets.</div>
-
+    <div class="description">Celui qui veille aux premières lueurs — gardien du verbe silencieux.</div>
+  </div>  <div class="symbol-block">
+    <div class="symbol">𓃭</div>
+    <div class="description">Le taureau sacré — force primordiale qui brise le mensonge.</div>
+  </div>  <div class="symbol-block">
+    <div class="symbol">𓂀</div>
+    <div class="description">L’œil éveillé — regard qui voit dans l'invisible, mémoire du monde ancien.</div>
+  </div>  <div class="symbol-block">
     <div class="symbol">𓆣</div>
-    <div class="desc">Le Serpent des eaux. 🛐 Cycle de vie, intuition et transformation silencieuse.</div>
-
+    <div class="description">Le serpent des eaux — souffle en spirale, gardien des portails mystiques.</div>
+  </div>  <div class="symbol-block">
     <div class="symbol">𓆋</div>
-    <div class="desc">Le Scarabée du Renouveau. 🛐 Chaque jour renaît. Chaque instant contient l’éternité.</div>
-  </div>
+    <div class="description">Celui qui rampe sous la lumière lunaire — maître du silence et du passage secret.</div>
+  </div>  <script>
+    const rainContainer = document.getElementById('rain');
+    const hieroglyphs = ['𓅓', '𓂀', '𓃭', '𓆑', '𓋹', '𓆣', '𓆋', '𓇋', '𓏏', '𓂋'];
+    const count = 150;
 
-  <script>
-    const canvas = document.querySelector(".matrix");
-    const ctx = canvas.getContext("2d");
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const hieros = "𓂀𓃭𓅋𓆣𓆋𓉐𓋹𓍯𓊃𓇳𓊪𓎛𓏏𓆑𓏲𓁹𓄿".split("");
-    const fontSize = 26;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.07)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#0ff";
-      ctx.font = fontSize + "px monospace";
-      for (let i = 0; i < drops.length; i++) {
-        const text = hieros[Math.floor(Math.random() * hieros.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.innerText = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (2 + Math.random() * 5) + 's';
+      span.style.fontSize = (12 + Math.random() * 24) + 'px';
+      rainContainer.appendChild(span);
     }
-    setInterval(draw, 50);
-  </script>
-</body>
+  </script></body>
 </html>
