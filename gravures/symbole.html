@@ -17,7 +17,6 @@
       background-size: 50px 50px;
       position: relative;
     }
-
     .rain {
       position: fixed;
       top: 0;
@@ -28,7 +27,6 @@
       overflow: hidden;
       z-index: 0;
     }
-
     .rain span {
       position: absolute;
       top: -10%;
@@ -36,24 +34,24 @@
       color: rgba(255, 255, 255, 0.2);
       animation: fall linear infinite;
     }
-
     @keyframes fall {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(120vh); }
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
     }
-
     .symbol-block {
       padding: 4em 2em;
       text-align: center;
       position: relative;
       z-index: 1;
     }
-
     .symbol {
       font-size: 6em;
       margin-bottom: 0.5em;
     }
-
     .description {
       font-size: 1.3em;
       color: #1abc9c;
@@ -65,18 +63,26 @@
       max-width: 90%;
       margin-bottom: 3em;
     }
-
+    /* ✅ ESPACEMENT ET STYLE DES BOUTONS */
     .button-container {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      gap: 50px; /* ← espace entre les boutons */
       flex-wrap: wrap;
       margin-top: 40px;
       margin-bottom: 40px;
       position: relative;
       z-index: 1;
+      flex-direction: column;
+      align-items: center;
     }
-
+    .navigation-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
     .return-button, .prayer-button {
       display: inline-block;
       padding: 20px 40px;
@@ -90,13 +96,12 @@
       transition: transform 0.3s ease;
       cursor: pointer;
       user-select: none;
+      text-align: center;
     }
-
     .return-button:hover, .prayer-button:hover {
       transform: scale(1.1);
       box-shadow: 0 0 40px #1abc9cff;
     }
-
     .prayer-text {
       display: block;
       font-size: 0.7em;
@@ -111,6 +116,7 @@
 <body>
   <div class="rain" id="rain"></div>
 
+  <!-- Symboles avec descriptions -->
   <div class="symbol-block">
     <div class="symbol">𓅋</div>
     <div class="description">Celui qui veille aux premières lueurs — gardien du verbe silencieux.</div>
@@ -132,14 +138,25 @@
     <div class="description">Celui qui rampe sous la lumière lunaire — maître du silence et du passage secret.</div>
   </div>
 
+  <!-- Navigation entre pages -->
   <div class="button-container">
+    <div class="navigation-buttons">
+      <a href="page1.html" class="return-button">Page 1</a>
+      <a href="page2.html" class="return-button">Page 2</a>
+      <a href="page3.html" class="return-button">Page 3</a>
+      <a href="page4.html" class="return-button">Page 4</a>
+    </div>
+
+    <!-- Boutons déjà présents -->
     <a href="chapitre9gravures.html" class="return-button" title="Retour à la page 3">
       𓂀 Retour vers le Future
     </a>
 
     <div class="prayer-button" title="Prière à Amon">
       𓅃 Prière à Amon
-      <span class="prayer-text">"Ô Amon, souffle sacré, guide-nous vers la lumière et protège notre chemin."</span>
+      <span class="prayer-text">
+        "Ô Amon, souffle sacré, guide-nous vers la lumière et protège notre chemin."
+      </span>
     </div>
   </div>
 
