@@ -35,8 +35,12 @@
       animation: fall linear infinite;
     }
     @keyframes fall {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(120vh); }
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
     }
     .symbol-block {
       padding: 4em 2em;
@@ -60,18 +64,19 @@
       margin-bottom: 3em;
     }
 
-    /* Boutons */
+    /* ✅ ESPACEMENT ET STYLE DES BOUTONS */
     .button-container {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 50px; /* ← espace entre les boutons */
+      flex-wrap: wrap;
       margin-top: 40px;
       margin-bottom: 40px;
       position: relative;
       z-index: 1;
     }
-
     .return-button, .prayer-button {
       display: inline-block;
-      margin: 0 20px; /* séparation entre les boutons */
       padding: 20px 40px;
       font-size: 1.5em;
       font-weight: bold;
@@ -84,21 +89,10 @@
       cursor: pointer;
       user-select: none;
     }
-
-    .return-button:hover {
+    .return-button:hover, .prayer-button:hover {
       transform: scale(1.1);
       box-shadow: 0 0 40px #1abc9cff;
     }
-
-    .prayer-button {
-      animation: pulseLight 3s infinite;
-    }
-
-    .prayer-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 50px #1abc9c;
-    }
-
     .prayer-text {
       display: block;
       font-size: 0.7em;
@@ -108,24 +102,12 @@
       text-shadow: 0 0 5px #1abc9c;
       max-width: 250px;
     }
-
-    @keyframes pulseLight {
-      0% {
-        box-shadow: 0 0 15px #1abc9c66;
-      }
-      50% {
-        box-shadow: 0 0 35px #1abc9c;
-      }
-      100% {
-        box-shadow: 0 0 15px #1abc9c66;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="rain" id="rain"></div>
 
-  <!-- Symboles -->
+  <!-- Symboles avec descriptions -->
   <div class="symbol-block">
     <div class="symbol">𓅋</div>
     <div class="description">Celui qui veille aux premières lueurs — gardien du verbe silencieux.</div>
@@ -147,26 +129,24 @@
     <div class="description">Celui qui rampe sous la lumière lunaire — maître du silence et du passage secret.</div>
   </div>
 
-  <!-- BOUTONS SACRÉS -->
+  <!-- ✅ BOUTONS ALIGNÉS ET ESPACÉS -->
   <div class="button-container">
-    <!-- Redirige vers la page 3 -->
     <a href="chapitre9gravures.html" class="return-button" title="Retour à la page 3">
       𓂀 Retour vers le Future
     </a>
 
-    <!-- Ne redirige nulle part -->
     <div class="prayer-button" title="Prière à Amon">
       𓅃 Prière à Amon
-      <span class="prayer-text">"Ô Amon, souffle sacré, guide-nous vers la lumière et protège notre chemin."</span>
+      <span class="prayer-text">
+        "Ô Amon, souffle sacré, guide-nous vers la lumière et protège notre chemin."
+      </span>
     </div>
   </div>
 
-  <!-- Pluie de symboles -->
   <script>
     const rainContainer = document.getElementById('rain');
     const hieroglyphs = ['𓅓', '𓂀', '𓃭', '𓆑', '𓋹', '𓆣', '𓆋', '𓇋', '𓏏', '𓂋'];
     const count = 150;
-
     for (let i = 0; i < count; i++) {
       const span = document.createElement('span');
       span.innerText = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
