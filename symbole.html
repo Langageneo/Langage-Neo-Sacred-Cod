@@ -12,16 +12,17 @@
       background: #000;
       color: #fff;
       overflow-x: hidden;
-      background-image: radial-gradient(#111 1px, transparent 1px),
-                        radial-gradient(#111 1px, transparent 1px);
+      background-image: radial-gradient(#111 1px, transparent 1px), radial-gradient(#111 1px, transparent 1px);
       background-position: 0 0, 25px 25px;
       background-size: 50px 50px;
       position: relative;
     }
     .rain {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       overflow: hidden;
       z-index: 0;
@@ -34,8 +35,12 @@
       animation: fall linear infinite;
     }
     @keyframes fall {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(120vh); }
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
     }
     .symbol-block {
       padding: 4em 2em;
@@ -58,10 +63,12 @@
       max-width: 90%;
       margin-bottom: 3em;
     }
+
+    /* ✅ ESPACEMENT ET STYLE DES BOUTONS */
     .button-container {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      gap: 50px; /* ← espace entre les boutons */
       flex-wrap: wrap;
       margin-top: 40px;
       margin-bottom: 40px;
@@ -98,7 +105,6 @@
   </style>
 </head>
 <body>
-
   <div class="rain" id="rain"></div>
 
   <!-- Symboles avec descriptions -->
@@ -123,10 +129,10 @@
     <div class="description">Celui qui rampe sous la lumière lunaire — maître du silence et du passage secret.</div>
   </div>
 
-  <!-- Boutons -->
+  <!-- ✅ BOUTONS ALIGNÉS ET ESPACÉS -->
   <div class="button-container">
-    <a href="page3.html" class="return-button" title="Retour à la page 3">
-      𓂀 Retour vers la page 3
+    <a href="chapitre9gravures.html" class="return-button" title="Retour à la page 3">
+      𓂀 Retour vers le Futur
     </a>
 
     <div class="prayer-button" title="Prière à Amon">
@@ -150,6 +156,5 @@
       rainContainer.appendChild(span);
     }
   </script>
-
 </body>
 </html>
