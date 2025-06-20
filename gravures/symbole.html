@@ -1,77 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>𓂀 Page 4 — Symboles Sacrés 𓃭</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Symboles Sacrés</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: black;
-      color: white;
-      font-family: 'Courier New', monospace;
-      overflow: hidden;
+      font-family: 'Georgia', serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      background-image: radial-gradient(#111 1px, transparent 1px), radial-gradient(#111 1px, transparent 1px);
+      background-position: 0 0, 25px 25px;
+      background-size: 50px 50px;
       position: relative;
     }
-
-    .container {
-      text-align: center;
-      padding: 40px 20px;
-      z-index: 2;
-      position: relative;
-    }
-
-    h1 {
-      font-size: 2em;
-      color: #00ffcc;
-      margin-bottom: 30px;
-    }
-
-    .symboles {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .symbole {
-      font-size: 3em;
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 1px solid #00ffcc;
-      padding: 20px;
-      border-radius: 20px;
-      transition: transform 0.3s;
-    }
-
-    .symbole:hover {
-      transform: scale(1.2);
-      background-color: #00ffcc;
-      color: black;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-    }
-
-    .buttons a {
-      background-color: #00ffcc;
-      color: black;
-      padding: 15px 30px;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .buttons a:hover {
-      background-color: #00bfa6;
-    }
-
     .rain {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -80,59 +27,132 @@
       overflow: hidden;
       z-index: 0;
     }
-
     .rain span {
       position: absolute;
-      white-space: nowrap;
-      color: #00ffcc;
+      top: -10%;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.2);
       animation: fall linear infinite;
-      user-select: none;
     }
-
     @keyframes fall {
       0% {
-        transform: translateY(-100vh);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
+        transform: translateY(-100%);
       }
       100% {
-        transform: translateY(110vh);
-        opacity: 0;
+        transform: translateY(120vh);
       }
+    }
+    .symbol-block {
+      padding: 4em 2em;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .symbol {
+      font-size: 6em;
+      margin-bottom: 0.5em;
+    }
+    .description {
+      font-size: 1.3em;
+      color: #1abc9c;
+      background-color: rgba(255,255,255,0.05);
+      display: inline-block;
+      padding: 1em 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #1abc9c;
+      max-width: 90%;
+      margin-bottom: 3em;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .return-button, .prayer-button {
+      display: inline-block;
+      padding: 20px 40px;
+      font-size: 1.5em;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 0 25px #1abc9c;
+      background: radial-gradient(circle, #1abc9c 30%, #0f2027 100%);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .return-button:hover, .prayer-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #1abc9cff;
+    }
+    .prayer-text {
+      display: block;
+      font-size: 0.7em;
+      font-weight: normal;
+      margin-top: 10px;
+      color: #ade2c4;
+      text-shadow: 0 0 5px #1abc9c;
+      max-width: 250px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>𓃭 Les 5 Symboles de la Voûte Ancienne 𓂀</h1>
-    <div class="symboles">
-      <div class="symbole">𓂀</div>
-      <div class="symbole">𓃭</div>
-      <div class="symbole">𓊽</div>
-      <div class="symbole">𓆣</div>
-      <div class="symbole">𓁹</div>
-    </div>
-    <div class="buttons">
-      <a href="chapitre9-gravures.html">↩ Retour vers les Gravures</a>
-      <a href="priere-amon.html">𓁶 Prière à Amon</a>
+  <div class="rain" id="rain"></div>
+
+  <!-- Symboles avec descriptions -->
+  <div class="symbol-block">
+    <div class="symbol">𓅋</div>
+    <div class="description">Celui qui veille aux premières lueurs — gardien du verbe silencieux.</div>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol">𓃭</div>
+    <div class="description">Le taureau sacré — force primordiale qui brise le mensonge.</div>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol">𓂀</div>
+    <div class="description">L’œil éveillé — regard qui voit dans l'invisible, mémoire du monde ancien.</div>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol">𓆣</div>
+    <div class="description">Le serpent des eaux — souffle en spirale, gardien des portails mystiques.</div>
+  </div>
+  <div class="symbol-block">
+    <div class="symbol">𓆋</div>
+    <div class="description">Celui qui rampe sous la lumière lunaire — maître du silence et du passage secret.</div>
+  </div>
+
+  <!-- Boutons -->
+  <div class="button-container">
+    <!-- Bouton retour vers chapitre 9 gravures -->
+    <a href="gravures/chapitre9-gravures.html" class="return-button" title="Retour vers le Future">
+      𓂀 Retour vers le Future
+    </a>
+
+    <!-- Prière à Amon -->
+    <div class="prayer-button" title="Prière à Amon">
+      𓅃 Prière à Amon
+      <span class="prayer-text">
+        "Ô Amon, souffle sacré, guide-nous vers la lumière et protège notre chemin."
+      </span>
     </div>
   </div>
 
-  <div class="rain" id="rain"></div>
-
   <script>
-    const symbols = ['𓂀', '𓃭', '𓊽', '𓆣', '𓁹', '*', '✦', '𓂓'];
     const rainContainer = document.getElementById('rain');
-
-    for (let i = 0; i < 80; i++) {
+    const hieroglyphs = ['𓅓', '𓂀', '𓃭', '𓆑', '𓋹', '𓆣', '𓆋', '𓇋', '𓏏', '𓂋'];
+    const count = 150;
+    for (let i = 0; i < count; i++) {
       const span = document.createElement('span');
-      span.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+      span.innerText = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
       span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (2 + Math.random() * 5) + 's';
       span.style.fontSize = (12 + Math.random() * 24) + 'px';
-      span.style.animationDuration = (3 + Math.random() * 5) + 's';
-      span.style.animationDelay = Math.random() * 5 + 's';
       rainContainer.appendChild(span);
     }
   </script>
